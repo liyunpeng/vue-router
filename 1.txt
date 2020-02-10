@@ -1,0 +1,151 @@
+$ vue init webpack baoge
+
+? Project name (baoge)
+? Project name baoge
+? Project description (A Vue.js project)
+? Project description A Vue.js project
+? Author (lijinyang <kylin27@126.com>)
+? Author lijinyang <kylin27@126.com>
+? Vue build standalone
+? Install vue-router? (Y/n) Y
+? Install vue-router? Yes
+? Use ESLint to lint your code? (Y/n) Y
+? Use ESLint to lint your code? Yes
+? Pick an ESLint preset (Use arrow keys)
+? Pick an ESLint preset Standard
+? Set up unit tests (Y/n) Y
+? Set up unit tests Yes
+? Pick a test runner (Use arrow keys)
+? Pick a test runner jest
+? Setup e2e tests with Nightwatch? (Y/n) Y
+? Setup e2e tests with Nightwatch? Yes
+? Should we run `npm install` for you after the project has been created? (recom
+? Should we run `npm install` for you after the project has been created? (recom
+mended) npm
+
+   vue-cli · Generated "baoge".
+
+
+# Installing project dependencies ...
+# ========================
+
+npm WARN deprecated extract-text-webpack-plugin@3.0.2: Deprecated. Please use https://github.com/webpack-contrib/mini-css-extract-plugin
+npm WARN deprecated browserslist@2.11.3: Browserslist 2 could fail on reading Browserslist >3.0 config used in other tools.
+npm WARN deprecated core-js@2.6.11: core-js@<3 is no longer maintained and not recommended for usage due to the number of issues. Please, upgrade your dependencies to the actual version of core-js@3.
+npm WARN deprecated bfj-node4@5.3.1: Switch to the `bfj` package for fixes and new features!
+npm WARN deprecated json3@3.3.2: Please use the native JSON object instead of JSON 3
+npm WARN deprecated browserslist@1.7.7: Browserslist 2 could fail on reading Browserslist >3.0 config used in other tools.
+npm WARN deprecated circular-json@0.3.3: CircularJSON is in maintenance only, flatted is its successor.
+npm WARN deprecated socks@1.1.10: If using 2.x branch, please upgrade to at least 2.1.6 to avoid a serious bug with socket data flow and an import issue introduced in 2.1.0
+npm WARN deprecated left-pad@1.3.0: use String.prototype.padStart()
+
+
+> chromedriver@2.46.0 install E:\web-front\vue-router\baoge\node_modules\chromedriver
+> node install.js
+
+ChromeDriver binary exists. Validating...
+ChromeDriver 2.46.628402 (536cd7adbad73a3783fdc2cab92ab2ba7ec361e1)
+
+ChromeDriver is already available at 'C:\Users\allen\AppData\Local\Temp\2.46\chromedriver\chromedriver.exe'.
+Copying to target path E:\web-front\vue-router\baoge\node_modules\chromedriver\lib\chromedriver
+Done. ChromeDriver binary available at E:\web-front\vue-router\baoge\node_modules\chromedriver\lib\chromedriver\chromedriver.exe
+
+> core-js@2.6.11 postinstall E:\web-front\vue-router\baoge\node_modules\core-js
+> node -e "try{require('./postinstall')}catch(e){}"
+
+Thank you for using core-js ( https://github.com/zloirock/core-js ) for polyfilling JavaScript standard library!
+
+The project needs your help! Please consider supporting of core-js on Open Collective or Patreon:
+> https://opencollective.com/core-js
+> https://www.patreon.com/zloirock
+
+Also, the author of core-js ( https://github.com/zloirock ) is looking for a good job -)
+
+
+> uglifyjs-webpack-plugin@0.4.6 postinstall E:\web-front\vue-router\baoge\node_modules\webpack\node_modules\uglifyjs-webpack-plugin
+> node lib/post_install.js
+
+npm notice created a lockfile as package-lock.json. You should commit this file.
+npm WARN ajv-keywords@2.1.1 requires a peer of ajv@^5.0.0 but none is installed. You must install peer dependencies yourself.
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.11 (node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.2.11: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+
+added 1739 packages from 1098 contributors and audited 32505 packages in 451.564s
+
+26 packages are looking for funding
+  run `npm fund` for details
+
+found 92 vulnerabilities (69 low, 9 moderate, 13 high, 1 critical)
+  run `npm audit fix` to fix them, or `npm audit` for details
+
+
+Running eslint --fix to comply with chosen preset rules...
+# ========================
+
+
+> baoge@1.0.0 lint E:\web-front\vue-router\baoge
+> eslint --ext .js,.vue src test/unit test/e2e/specs "--fix"
+
+
+# Project initialization finished!
+# ========================
+
+To get started:
+
+  cd baoge
+  npm run dev
+
+Documentation can be found at https://vuejs-templates.github.io/webpack
+
+
+
+allen@allen-PC MINGW64 /e/web-front/vue-router (master)
+$
+
+allen@allen-PC MINGW64 /e/web-front/vue-router (master)
+$ ls
+baoge/
+
+allen@allen-PC MINGW64 /e/web-front/vue-router (master)
+$ ls baoge/
+build/   index.html     package.json       README.md  static/
+config/  node_modules/  package-lock.json  src/       test/
+
+allen@allen-PC MINGW64 /e/web-front/vue-router (master)
+$ cd baoge/
+
+allen@allen-PC MINGW64 /e/web-front/vue-router/baoge (master)
+$ ls
+build/   index.html     package.json       README.md  static/
+config/  node_modules/  package-lock.json  src/       test/
+
+allen@allen-PC MINGW64 /e/web-front/vue-router/baoge (master)
+$ cat index.html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>baoge</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>
+
+allen@allen-PC MINGW64 /e/web-front/vue-router/baoge (master)
+$ ls src/
+App.vue     assets/     components/ main.js     router/
+
+allen@allen-PC MINGW64 /e/web-front/vue-router/baoge (master)
+$ ls src/
+App.vue  assets/  components/  main.js  router/
+
+allen@allen-PC MINGW64 /e/web-front/vue-router/baoge (master)
+$ ls
+build/   index.html     package.json       README.md  static/
+config/  node_modules/  package-lock.json  src/       test/
+
+allen@allen-PC MINGW64 /e/web-front/vue-router/baoge (master)
+$
