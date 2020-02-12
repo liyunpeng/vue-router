@@ -1,0 +1,23 @@
+1. 安装
+$ npm install element-ui
+npm WARN ajv-keywords@2.1.1 requires a peer of ajv@^5.0.0 but none is installed. You must install peer dependencies yourself.
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.11 (node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.2.11: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+
++ element-ui@2.13.0
+updated 1 package and audited 32515 packages in 32.178s
+
+26 packages are looking for funding
+  run `npm fund` for details
+
+found 92 vulnerabilities (69 low, 9 moderate, 13 high, 1 critical)
+  run `npm audit fix` to fix them, or `npm audit` for details
+
+2. main.js使用
++import ElementUI from 'element-ui'
+
+ Vue.config.productionTip = false
+
++Vue.use(ElementUI)
+ /* eslint-disable no-new */
+ new Vue({
