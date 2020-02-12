@@ -1,6 +1,7 @@
 <template>
     <div>
         <MyChild :parentMessage="parentMessage"></MyChild>
+      <el-input v-model="inputData" placeholder="Please input" style="width:400px;max-width:100%;" />
     </div>
 </template>
 
