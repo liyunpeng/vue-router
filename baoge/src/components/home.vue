@@ -2,6 +2,7 @@
     <div>
         <el-input v-model="name" placeholder="Please input" style="width:400px;max-width:100%;" ></el-input>
         <h1>home</h1>
+        <h1>{{this.$store.state.count}}</h1>
         <p>{{msg}}</p>
         <p>{{name}}</p>
         <el-radio v-model="radio" label="1">备选项1</el-radio>
