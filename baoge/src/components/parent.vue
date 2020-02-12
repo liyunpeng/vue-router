@@ -5,7 +5,7 @@
 </template>
 
 <script>
-// import MyChild from '@components/MyChild'
+import MyChild from '@/components/MyChild'
 
 export default {
   components: {
