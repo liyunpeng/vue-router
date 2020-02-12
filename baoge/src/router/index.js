@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import radio from '@components/radio'
+import radio from '@/components/radio'
 import HelloWorld from '@/components/HelloWorld'
 import home from '@/components/home'
 import parent from '@/components/parent'
@@ -26,10 +26,10 @@ export default new Router({
     {
       path: '/input', //   访问路径： http://localhost:8080/#/parent
       component: input
+    },
+    {
+      path: '/radio', //   访问路径： http://localhost:8080/#/home
+      component: radio
     }
-    // {
-    //   path: '/radio', //   访问路径： http://localhost:8080/#/home
-    //   component: radio
-    // }
   ]
 })
