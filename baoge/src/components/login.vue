@@ -118,6 +118,18 @@ export default {
       }
     }
   },
+  mounted () {
+    // response返回一个json{"data": "数据","status": "状态码","statusText":"状态文本","headers":{ "content-type": "application/json; charset=utf-8" },"config":"配置文件","method":"方法","url":"请求url","request":"请求体"}
+    // axios.get('http://localhost:8000/v1/line').then(response => (
+    //   this.xdata = response.data.legend_data,
+    //     this.ydata = response.data.xAxis_data))
+    this.$axios.get('http://127.0.0.1:3000/api/v1/user/me').then((res) => {
+      this.register_form.username = res.data
+    // eslint-disable-next-line handle-callback-err
+    }).catch(err => {
+    }).finally(() => {
+    })
+  },
   methods: {
     checkEmail () {
       // eslint-disable-next-line no-useless-escape

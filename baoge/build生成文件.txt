@@ -1,0 +1,26 @@
+$ npm run build
+
+> baoge@1.0.0 build E:\web-front\vue-router\baoge
+> node build/build.js
+
+Hash: 5ecff226b065f78cc7e3
+Version: webpack 3.12.0
+Time: 54305ms
+                                                  Asset       Size  Chunks                    Chunk Names
+               static/js/vendor.c4ef4013667efb6632eb.js     848 kB       0  [emitted]  [big]  vendor
+                  static/js/app.6318c6e2a38150ac1554.js    13.6 kB       1  [emitted]         app
+             static/js/manifest.2ae2e69a05c33dfc65f8.js  857 bytes       2  [emitted]         manifest
+    static/css/app.dd85a7aa98a31ed3ffa31d1b9cb75fac.css    2.13 kB       1  [emitted]         app
+static/css/app.dd85a7aa98a31ed3ffa31d1b9cb75fac.css.map    4.25 kB          [emitted]
+           static/js/vendor.c4ef4013667efb6632eb.js.map    3.36 MB       0  [emitted]         vendor
+              static/js/app.6318c6e2a38150ac1554.js.map      63 kB       1  [emitted]         app
+         static/js/manifest.2ae2e69a05c33dfc65f8.js.map    4.97 kB       2  [emitted]         manifest
+                                             index.html  507 bytes          [emitted]
+
+  Build complete.
+
+  Tip: built files are meant to be served over an HTTP server.
+  Opening index.html over file:// won't work.
+
+
+生成到/dist/目录下， 使用时， 把dist下所有内容考出来， 放到web服务
