@@ -62,6 +62,29 @@ export default {
   },
   created () {
     this.$store.commit('changeIsHome')
+  },
+  mounted () {
+    this.initTotal()
+    this.onSubmit()
+  },
+  initTotal () {
+    this.$axios.get(`/geta/`, {
+      params: {
+        query: this.namea
+      }
+    }).then(res => {
+      this.nameb = res.data
+    })
+  },
+  onSubmit () {
+    this.$axios.get(`/getb/`, {
+      params: {
+        query: this.formInline,
+        limit: this.limit,
+        offset: this.offset
+      }
+    }).then(res => {
+    })
   }
 }
 </script>
