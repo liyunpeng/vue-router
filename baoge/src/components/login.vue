@@ -137,7 +137,11 @@ export default {
       }
     },
     dologin () {
-
+      this.$axios.get('http://127.0.0.1:3000/api/v1/user/me').then((res) => {
+        // eslint-disable-next-line handle-callback-err
+      }).catch(err => {
+      }).finally(() => {
+      })
     },
     changePage () {
       this.sideLogin = !this.sideLogin

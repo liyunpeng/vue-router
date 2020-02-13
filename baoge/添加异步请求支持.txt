@@ -1,0 +1,46 @@
+1. 安装
+$ npm install axios
+npm WARN ajv-keywords@2.1.1 requires a peer of ajv@^5.0.0 but none is installed. You must install peer dependencies yourself.
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.11 (node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.2.11: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+
++ axios@0.19.2
+added 3 packages from 7 contributors and audited 32520 packages in 54.686s
+
+26 packages are looking for funding
+  run `npm fund` for details
+
+found 92 vulnerabilities (69 low, 9 moderate, 13 high, 1 critical)
+  run `npm audit fix` to fix them, or `npm audit` for details
+
+2. 引入安装包
+diff --git a/baoge/src/main.js b/baoge/src/main.js
+index e7a9dc4..46037c7 100644
+--- a/baoge/src/main.js
++++ b/baoge/src/main.js
+@@ -5,6 +5,10 @@ import App from './App'
+ import router from './router'
+ import store from './store'
+ import ElementUI from 'element-ui'
++import axios from 'axios'
++
++axios.defaults.withCredentials = true
++Vue.prototype.$axios = axios
+
+3. 使用
+登录的异步请求：
+diff --git a/baoge/src/components/login.vue b/baoge/src/components/login.vue
+index 2aff435..de12036 100644
+--- a/baoge/src/components/login.vue
++++ b/baoge/src/components/login.vue
+@@ -137,7 +137,11 @@ export default {
+       }
+     },
+     dologin () {
+-
++      this.$axios.get('http://127.0.0.1:3000/api/v1/user/me').then((res) => {
++        // eslint-disable-next-line handle-callback-err
++      }).catch(err => {
++      }).finally(() => {
++      })
+     },
