@@ -5,6 +5,7 @@ import HelloWorld from '@/components/HelloWorld'
 import home from '@/components/home'
 import parent from '@/components/parent'
 import input from '@/components/input'
+import login from '@/components/login'
 
 Vue.use(Router)
 
@@ -28,8 +29,12 @@ export default new Router({
       component: input
     },
     {
-      path: '/menutable', //   访问路径： http://localhost:8080/#/home
+      path: '/menutable', //   访问路径： http://localhost:8080/#/menutable
       component: menutable
+    },
+    {
+      path: '/login', //   访问路径： http://localhost:8080/#/login
+      component: login
     }
   ]
 })

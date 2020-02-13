@@ -63,7 +63,7 @@ export default {
         username: '',
         email: '',
         password: '',
-        checkpass: '',
+        checkpass: ''
       },
       rules: {
         username: [
@@ -73,7 +73,7 @@ export default {
               if (value == '') {
                 callback(new Error('请输入用户名'))
               }
-              callback();
+              callback()
             },
             trigger: 'blur'
           }
@@ -82,11 +82,11 @@ export default {
           {
             validator: (rule, value, callback) => {
               // eslint-disable-next-line no-useless-escape
-              var pattern = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+              var pattern = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/
               if (!pattern.test(value)) {
                 callback(new Error('请输入正确的邮箱格式'))
               }
-              callback();
+              callback()
             },
             trigger: 'blur'
           }
@@ -97,7 +97,7 @@ export default {
               if (value === '') {
                 callback(new Error('请输入密码'))
               }
-              callback();
+              callback()
             },
             trigger: 'blur'
           }
@@ -121,19 +121,19 @@ export default {
   methods: {
     checkEmail () {
       // eslint-disable-next-line no-useless-escape
-      var pattern = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+      var pattern = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/
       if (pattern.test(this.username)) {
-        this.showpsd = true;
-        this.showButton = false;
+        this.showpsd = true
+        this.showButton = false
       } else {
-        this.$message.error('邮箱格式不正确！');
+        this.$message.error('邮箱格式不正确！')
       }
     },
     checkEmailEmp (newstr) {
       // eslint-disable-next-line eqeqeq
       if (newstr == '') {
-        this.showpsd = false;
-        this.showButton = true;
+        this.showpsd = false
+        this.showButton = true
       }
     },
     dologin () {
