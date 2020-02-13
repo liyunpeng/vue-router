@@ -1,0 +1,23 @@
+跟踪到是哪里调用了mutations里的方法，
+在严格模式下调用mutations也不会报错。
+
+如果用其它方法的话上面说的两个好处都不存在。
+用法
+先定义个mutations对象，然后定义指定的方法就可以了，很简单，代码示例：
+
+    state: {
+        isHome: true
+    },
+
+    mutations: {
+        changeIsHome(state) {        // 这里将state传进来了
+            state.isHome = false
+        }
+    }
+在stote.js中定义好mutations方法之后，就在vue中触发事件的时候调用mutations方法就可以了，调用方法示例：
+
+  // 这里示例是在created方法中触发mutations方法
+
+  created() {
+    this.$store.commit('changeIsHome')    // 这就是调用的方法
+

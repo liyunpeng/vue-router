@@ -59,6 +59,9 @@ export default {
       // 监听事件的处理方法，回调时会获取到修改后的值
       alert(`值被修改为：${value}`)
     }
+  },
+  created () {
+    this.$store.commit('changeIsHome')
   }
 }
 </script>
