@@ -2,7 +2,9 @@
   <div class="slotcontent">
     <ul>
       这是子组件开始
-      <slot></slot>
+      <slot name="my-header"></slot>
+      <slot name="my-body"></slot>
+      <slot name="my-footer"></slot>
       <li v-for="item in items">{{item.text}}</li>
       这是子组件结束
     </ul>
