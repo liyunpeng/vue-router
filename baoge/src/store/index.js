@@ -19,6 +19,12 @@ const store = new Vuex.Store({
     changeIsHome (state) {
       state.isHome = false
       console.log('mutations ')
+    },
+    setHasLogin (state, hasLogin) {
+      state.hasLogin = hasLogin
+    },
+    setToken (state, token) {
+      state.token = token
     }
   },
   actions: {

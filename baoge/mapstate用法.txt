@@ -55,15 +55,15 @@ export default {
 }
 
 4. mapmutations的简洁写法，
- 只要template 里的click引用的名字和mutations里定义的名字， mapmutations只写个声明，就会自动调用mutatiosns里的方法， 如
- order.vue的template click为：
- <button @click="setUserName('big_cat')">设置用户名</button>
- src/state/user.js 的mutaions改为与template click引用的名字相同：
- const mutations = {
-   setUserName (state, name) {
-     state.name = name
-   }
+只要template 里的click引用的名字和mutations里定义的名字， mapmutations只写个声明，就会自动调用mutatiosns里的方法， 如
+order.vue的template click为：
+<button @click="setUserName('big_cat')">设置用户名</button>
+src/state/user.js 的mutaions改为与template click引用的名字相同：
+const mutations = {
+ setUserName (state, name) {
+   state.name = name
  }
-  order.vue的script 只需要写：
-  methods: {
-  ...mapMutations(['setUserName']),
+}
+order.vue的script 只需要写：
+methods: {
+...mapMutations(['setUserName']),
