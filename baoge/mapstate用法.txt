@@ -1,0 +1,55 @@
+页面上的文字如果需要动态变化， 全都用{{ 变量名}} 应用
+如果这个变量只会在被页面修改，比如本页面的input框修改， input就可用v-model来双向绑定这个变量
+如果要被其他页面修改， 就要用到vuex的mapstate.
+mapstate会给变量绑定到vuex里的对象，
+这样vuex对象被其他页面修改时， 本页面的变量也会跟着变化，因为是绑定了。
+从开源的vue项目上看， 基本都用mapstate, mapstate还起到付初始值的作用
+template页面不会有具体的文字，数据，只会出现被绑定的变量。
+
+示范基础最小化动作：
+1. 创建文件： src/state/user.js
+const state = {
+  name: 'from src state user.js',
+}
+const mutations = {
+  storesetUserName (state, name) {
+    state.name = name
+  }
+}
+export default {state, mutations}
+
+3. src/store/index.js添加：
+import user from './user'
+const store = new Vuex.Store({
+  modules: {
+    user      //  引用这个user里的变来可以这样引用： state => state.user.name,
+  },
+
+2. src/main.js中添加：
+import store from './store'
+Vue.prototype.$store = store // 注入仓库
+const app = new Vue({
+...
+  store,
+...
+})
+app.$mount()
+
+3. 在一个vue文件添加：
+这里以order.vue为例子，模板中添加：
+ <button @click="setUserName('big_cat')">setUserName</button>
+在<script>添加
+import { mapState, mapMutations } from 'vuex'
+export default {
+ computed: {
+     ...mapState({   // 完成变量绑定
+       userName: state => state.user.name,
+     })
+ }
+ methods: {
+     ...mapMutations({  // 完成方法绑定
+       setUserName (commit, userName) {
+         commit('storesetUserName', userName)
+       },
+     })
+}

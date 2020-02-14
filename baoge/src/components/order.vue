@@ -4,9 +4,13 @@
       <button class="primary" @click="setUserName('big_cat')">setUserName</button>
       <button class="primary" @click="setUserAge(27)">setUserAge</button>
       <button class="primary" @click="setOrderName('yes')">setOrderName</button>
+      <button class="primary" @click="setHasLogin(true)">setHasLogin</button>
+      <button class="primary" @click="setToken('tokentokentokentoken')">setToken</button>
       <p>{{userName}}</p>
       <p>{{userAge}}</p>
       <p>{{orderName}}</p>
+      <p>haslogin: {{hasLogin}}</p>
+      <p>token: {{token}}</p>
   </div>
 </template>
 <script>
@@ -17,12 +21,12 @@ export default {
   },
   computed: {
     // 原生
-    // hasLogin () {
-    //   return this.$store.state.hasLogin
-    // },
-    // token () {
-    //   return this.$store.state.token
-    // },
+    hasLogin () {
+      return this.$store.state.hasLogin
+    },
+    token () {
+      return this.$store.state.token
+    },
     // 仓库root属性 可以直接 magic 赋值
     // ...mapState(["hasLogin", "token"]),
     // 因为 modules 下的属性使用了命名空间 所以不能使用数组方式的 magic

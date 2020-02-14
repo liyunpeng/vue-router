@@ -11,7 +11,9 @@ const store = new Vuex.Store({
     order
   },
   state: {
-    count: 1
+    count: 1,
+    hasLogin: false,
+    token: 'token string'
   },
   mutations: {
     changeIsHome (state) {
