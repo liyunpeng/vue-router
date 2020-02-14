@@ -3,7 +3,7 @@ const state = {
   age: 25
 }
 const mutations = {
-  storesetUserName (state, name) {
+  setUserName (state, name) {
     state.name = name
   },
   setUserAge (state, age) {

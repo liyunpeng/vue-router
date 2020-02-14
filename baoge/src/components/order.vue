@@ -49,20 +49,20 @@ export default {
     // mutation依然没有命名空间的概念 所以在定义 mutations 时要注意全局的唯一性
     // 否则后者会覆盖前者
     // ...mapMutations(['setHasLogin', 'setToken']),
-    // magic style1
-    // ...mapMutations(['setUserName', 'setUserAge', 'setOrderName']),
+    // template click引用的名字和store mutations里的定义的名字，如果完全相等，可以不用谢commit函数调用
+    ...mapMutations(['setUserName', 'setUserAge', 'setOrderName']),
     // magic style2
-    ...mapMutations({
-      setUserName (commit, userName) {
-        commit('storesetUserName', userName)
-      },
-      setUserAge (commit, userAge) {
-        commit('setUserAge', userAge)
-      },
-      setOrderName (commit, orderName) {
-        commit('setOrderName', orderName)
-      }
-    })
+    // ...mapMutations({
+    //   setUserName (commit, userName) {
+    //     commit('storesetUserName', userName)
+    //   },
+    //   setUserAge (commit, userAge) {
+    //     commit('setUserAge', userAge)
+    //   },
+    //   setOrderName (commit, orderName) {
+    //     commit('setOrderName', orderName)
+    //   }
+    // })
     // // 原生写法
     // setUserName (userName) {
     //   this.$store.commit('setUserName', userName)
