@@ -8,6 +8,7 @@ import input from '@/components/input'
 import login from '@/components/login'
 import order from '@/components/order'
 import storea from '@/components/storea'
+import slotparent from '@/components/slotparent'
 
 Vue.use(Router)
 
@@ -45,6 +46,10 @@ export default new Router({
     {
       path: '/storea', //   访问路径： http://localhost:8080/#/order
       component: storea
+    },
+    {
+      path: '/slotparent', //   访问路径： http://localhost:8080/#/order
+      component: slotparent
     }
   ]
 })
