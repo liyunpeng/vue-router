@@ -10,7 +10,7 @@
         <div v-loading="isLoading">这块内容使用v-loading指令，true时loading</div>
         <el-button @click=handle>{{clickText}}</el-button>
         <el-input v-model="namea" @change="handleChange"></el-input>
-        <el-input v-model="nameb" @change="actionnum6"></el-input>
+        <el-input v-model="nameb" @change="mapaction"></el-input>
          <p>{{namea}}</p>
          <p>{{nameb}}</p>
         <el-time-select v-model="value1" :picker-options="{start: '08:30',step: '00:15',end: '18:30'}"></el-time-select>
@@ -62,7 +62,7 @@ export default {
     ...mapActions({
       actionnum: 'actionNumAdd'
     }),
-    actionnum6 () {
+    mapaction () {
       this.actionnum()
     },
 

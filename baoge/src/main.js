@@ -9,15 +9,16 @@ import axios from 'axios'
 
 axios.defaults.withCredentials = true
 Vue.prototype.$axios = axios
-
+Vue.prototype.$store = store // 注入仓库
 Vue.config.productionTip = false
 
 Vue.use(ElementUI)
 /* eslint-disable no-new */
-new Vue({
+const app = new Vue({
   el: '#app',
   router,
   store,
   components: { App },
   template: '<App/>'
 })
+app.$mount()
