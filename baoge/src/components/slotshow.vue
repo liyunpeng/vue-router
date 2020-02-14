@@ -7,6 +7,7 @@
       <slot name="my-footer"></slot>
       <li v-for="item in items">{{item.text}}</li>
       <slot name="item" v-for="item in items" :text="item.text">{{item}}</slot>
+      <slot chinldToParent="hello from child"></slot>
       这是子组件结束
     </ul>
   </div>
