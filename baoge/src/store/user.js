@@ -21,7 +21,8 @@ const mutations = {
   promiseFunc1 () {
     return new Promise((resolve, reject) => {
       fabc().then(data => {
-        console.log('then response ok')
+        console.log('then response ok:')
+        console.log(data)
         resolve()
       }).catch(error => {
         reject(error)
