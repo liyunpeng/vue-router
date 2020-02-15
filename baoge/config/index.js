@@ -10,8 +10,15 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
-
+    proxyTable: {
+      '/ws': {
+        target: 'http://192.168.0.141:8080/ws', // 要代理的域名
+        changeOrigin: true,//允许跨域
+        pathRewrite: {
+          '^/ws': '' // 这个是定义要访问的路径，名字随便写
+        }
+      }
+    },
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
     port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined

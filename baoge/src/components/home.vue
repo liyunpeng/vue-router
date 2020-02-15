@@ -9,9 +9,9 @@
         <el-radio v-model="radio" label="2">备选项2</el-radio>
         <div v-loading="isLoading">这块内容使用v-loading指令，true时loading</div>
         <el-button @click=handle>{{clickText}}</el-button>
-        <el-input v-model="namea" @change="handleChange"></el-input>
+        <el-input v-model="axiosget" @change="handleChange"></el-input>
         <el-input v-model="nameb" @change="mapaction"></el-input>
-         <p>{{namea}}</p>
+         <p>axios get : {{axiosget}}</p>
          <p>{{nameb}}</p>
         <el-time-select v-model="value1" :picker-options="{start: '08:30',step: '00:15',end: '18:30'}"></el-time-select>
     </div>
@@ -24,7 +24,7 @@ export default {
       msg: '我是home 组件',
       radio: '1',
       name: 'namename',
-      namea: 'namenam1e',
+      axiosget: 'namenam1e',
       nameb: 'nameb',
       isLoading: true,
       value1: '',
@@ -34,12 +34,11 @@ export default {
 
   methods: {
     initTotal () {
-      this.$axios.get(`/geta/`, {
+      this.$axios.get(`/ws/`, {
         params: {
-          query: this.namea
         }
       }).then(res => {
-        this.nameb = res.data
+        this.axiosget = res.data
       })
     },
     onSubmit () {
@@ -85,6 +84,7 @@ export default {
   mounted () {
     this.initTotal()
     this.onSubmit()
+    console.log('mounted ok')
   }
 }
 </script>
