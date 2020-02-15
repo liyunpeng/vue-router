@@ -34,7 +34,7 @@ export default {
 
   methods: {
     initTotal () {
-      this.$axios.get(`/ws/`, {
+      this.$axios.get(`/info/`, {
         params: {
         }
       }).then(res => {

@@ -11,11 +11,11 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      '/ws': {
-        target: 'http://192.168.0.141:8080/ws', // 要代理的域名
+      '/info': {
+        target: 'http://192.168.0.141:8080/info', // 要代理的域名
         changeOrigin: true,//允许跨域
         pathRewrite: {
-          '^/ws': '' // 这个是定义要访问的路径，名字随便写
+          '^/info': '' // 这个是定义要访问的路径，名字随便写
         }
       }
     },
