@@ -8,6 +8,9 @@ import input from '@/components/input'
 import login from '@/components/login'
 import order from '@/components/order'
 import slot1 from '@/components/slot1'
+import Collection from '@/components/Collection'
+import Trace from '@/components/Trace'
+import Me from '@/components/Me'
 import slotparent from '@/components/slotparent'
 
 Vue.use(Router)
@@ -50,6 +53,23 @@ export default new Router({
     {
       path: '/slotparent', //   访问路径： http://localhost:8080/#/order
       component: slotparent
+    },
+    {
+      path: '/me',
+      name: 'Me',
+      component: Me,
+      children: [
+        {
+          path: 'collection',
+          name: 'Collection',
+          component: Collection
+        },
+        {
+          path: 'trace',
+          name: 'Trace',
+          component: Trace
+        }
+      ]
     }
   ]
 })
