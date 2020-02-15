@@ -16,7 +16,7 @@
   </div>
 </template>
 <script>
-import { mapState, mapMutations } from 'vuex'
+import { mapState, mapActions, mapMutations } from 'vuex'
 export default {
   data () {
     return {}
@@ -44,9 +44,17 @@ export default {
     // },
   },
   methods: {
+    // ...mapActions({
+    //   promiseFunc1: 'promiseFunc1'
+    // }),
+    // promiseFunc1 () {
+    //   this.promiseFunc1()
+    // },
+    ...mapActions(['promiseFunc1']),
+
     // ...mapMutations 有两种写法
     // 1. 简洁写法： template click引用的名字和store mutations里的定义的名字，如果完全相等，可以不用谢commit函数调用
-    ...mapMutations(['setUserName', 'setUserAge', 'setOrderName', 'promiseFunc', 'promiseFunc1'])
+    ...mapMutations(['setUserName', 'setUserAge', 'setOrderName', 'promiseFunc'])
     // 2. 函数式写法：
     // ...mapMutations({
     //   setUserName (commit, userName) {

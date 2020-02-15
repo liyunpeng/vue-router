@@ -1,4 +1,4 @@
-import { fabc } from '@/api/user'
+import { apiFunc } from '@/api/user'
 const state = {
   name: 'sqrtcat',
   age: 25
@@ -17,10 +17,12 @@ const mutations = {
         resolve('随便什么数据')
       }, 500)
     })
-  },
+  }
+}
+const actions = {
   promiseFunc1 () {
     return new Promise((resolve, reject) => {
-      fabc().then(data => {
+      apiFunc().then(data => {
         console.log('then response ok:')
         console.log(data)
         resolve()
@@ -30,6 +32,5 @@ const mutations = {
     })
   }
 }
-const actions = {}
 const getters = {}
 export default {state, mutations, actions, getters}
