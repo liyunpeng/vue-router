@@ -1,3 +1,4 @@
+import { fabc } from '@/api/user'
 const state = {
   name: 'sqrtcat',
   age: 25
@@ -15,6 +16,16 @@ const mutations = {
         console.log('执行完成')
         resolve('随便什么数据')
       }, 500)
+    })
+  },
+  promiseFunc1 () {
+    return new Promise((resolve, reject) => {
+      fabc().then(data => {
+        console.log('then response ok')
+        resolve()
+      }).catch(error => {
+        reject(error)
+      })
     })
   }
 }

@@ -7,6 +7,7 @@
       <button class="primary" @click="setHasLogin(true)">setHasLogin</button>
       <button class="primary" @click="setToken('tokentokentokentoken')">setToken</button>
       <button class="primary" @click="promiseFunc('123')">promiseFunc</button>
+      <button class="primary" @click="promiseFunc1('123')">promiseFunc1</button>
       <p>{{userName}}</p>
       <p>{{userAge}}</p>
       <p>{{orderName}}</p>
@@ -45,7 +46,7 @@ export default {
   methods: {
     // ...mapMutations 有两种写法
     // 1. 简洁写法： template click引用的名字和store mutations里的定义的名字，如果完全相等，可以不用谢commit函数调用
-    ...mapMutations(['setUserName', 'setUserAge', 'setOrderName', 'promiseFunc'])
+    ...mapMutations(['setUserName', 'setUserAge', 'setOrderName', 'promiseFunc', 'promiseFunc1'])
     // 2. 函数式写法：
     // ...mapMutations({
     //   setUserName (commit, userName) {
