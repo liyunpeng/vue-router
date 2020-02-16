@@ -35,32 +35,81 @@ import VueAwesomeSwiper from 'vue-awesome-swiper'
 Vue.use(VueAwesomeSwiper)
 import 'swiper/dist/css/swiper.css'（css需要单独引用）
 3、在组件中使用
+diff --git a/baoge/src/components/slot1.vue b/baoge/src/components/slot1.vue
+index 3789aa5..7a8ec82 100644
+--- a/baoge/src/components/slot1.vue
++++ b/baoge/src/components/slot1.vue
+@@ -4,14 +4,31 @@
+         <p>{{msg}}</p>
+         <el-radio v-model="radio" label="1"><E5><A4><87><E9><80><89><E9><A1>
+<B9></el-radio>
+         <el-radio v-model="radio" label="2"><E5><A4><87><E9><80><89><E9><A1>
+<B9></el-radio>
++        <swiper :options="swiperOption">
++          <swiper-slide>1</swiper-slide>
++          <swiper-slide>2</swiper-slide>
++          <swiper-slide>3</swiper-slide>
++        </swiper>
+     </div>
+ </template>
+ <script>
++import { swiper, swiperSlide } from 'vue-awesome-swiper'
+ export default {
++  components: {
++    swiper,
++    swiperSlide
++  },
+   data () {
+     return {
+       msg: '<E6><88><91><E6><98><AF>home <E7><BB><84><E4><BB><B6>',
+-      radio: '1'
++      radio: '1',
++      swiperOption: {
++        slidesPerView: 'auto',
++        centeredSlides: true,
++        spaceBetween: 10,
++        loop: true,
++        speed: 600
++      }
+     }
+:
++        </swiper>
+     </div>
+ </template>
+ <script>
++import { swiper, swiperSlide } from 'vue-awesome-swiper'
+ export default {
++  components: {
++    swiper,
++    swiperSlide
++  },
+   data () {
+     return {
+       msg: '<E6><88><91><E6><98><AF>home <E7><BB><84><E4><BB><B6>',
+-      radio: '1'
++      radio: '1',
++      swiperOption: {
++        slidesPerView: 'auto',
++        centeredSlides: true,
++        spaceBetween: 10,
++        loop: true,
++        speed: 600
++      }
+     }
 
-1
-2
-3
-4
-5
-6
-7
-8
-import { swiper, swiperSlide } from 'vue-awesome-swiper'
+diff --git a/baoge/src/main.js b/baoge/src/main.js
+index e2d5427..f633971 100644
+--- a/baoge/src/main.js
++++ b/baoge/src/main.js
+@@ -6,12 +6,14 @@ import router from './router'
+ import store from './store'
+ import ElementUI from 'element-ui'
+ import axios from 'axios'
++import VueAwesomeSwiper from 'vue-awesome-swiper'
 
-export default {
-  components: {
-    swiper,
-    swiperSlide
-  }
-}
-html代码：
-
-1
-<swiper :options="swiperOption">
-1
-<swiper-slide>1</swiper-slide>
-1
-<swiper-slide>1</swiper-slide>
-1
-<swiper-slide>1</swiper-slide>
-1
-</swiper>
++import 'swiper/dist/css/swiper.css'
++Vue.use(VueAwesomeSwiper)
+ axios.defaults.withCredentials = true
+ Vue.prototype.$axios = axios
+ Vue.prototype.$store = store // <E6><B3><A8><E5><85><A5><E4><BB><93><E5><BA><93>
+ Vue.config.productionTip = false
