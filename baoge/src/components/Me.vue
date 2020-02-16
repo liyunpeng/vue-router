@@ -8,6 +8,7 @@
       </ul>
     </div>
     <div class="content">
+      <p>content</p>
       <router-view></router-view>
     </div>
   </div>
