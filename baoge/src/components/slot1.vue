@@ -1,14 +1,18 @@
 <template>
     <div>
-        <h1>home</h1>
-        <p>{{msg}}</p>
-        <el-radio v-model="radio" label="1">备选项</el-radio>
-        <el-radio v-model="radio" label="2">备选项</el-radio>
+        <h1>swiper</h1>
         <swiper :options="swiperOption">
           <swiper-slide>1</swiper-slide>
           <swiper-slide>2</swiper-slide>
           <swiper-slide>3</swiper-slide>
         </swiper>
+        <h1>swiper</h1>
+        <swiper :options="swiperOption">
+          <swiper-slide v-for="items in allData.bannerphoto" key="items">
+            <img :src="items" alt="">
+          </swiper-slide>
+          <div class="swiper-pagination" slot="pagination"></div>
+      </swiper>
     </div>
 </template>
 <script>
