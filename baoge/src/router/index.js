@@ -12,12 +12,18 @@ import Collection from '@/components/Collection'
 import Trace from '@/components/Trace'
 import Me from '@/components/Me'
 import Appmain from '@/components/Appmain'
+import page1 from '@/components/page1'
+import page2 from '@/components/page2'
+import mixindemo from '@/components/mixindemo'
 import slotparent from '@/components/slotparent'
 
 Vue.use(Router)
 // export default new Router({
 //   routes: [
 export const constantRoutes = [
+  {path: '/page1', component: page1},
+  {path: '/page2', component: page2},
+  {path: '/mixindemo', component: mixindemo},
   {
     path: '/',
     name: 'HelloWorld',

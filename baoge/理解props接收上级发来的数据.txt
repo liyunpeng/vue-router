@@ -1,0 +1,43 @@
+例子能最快说明意思：
+1. MyChild.vue:
+<template>
+    <div>
+        <span>{{ parentMessage }}</span>
+    </div>
+</template>
+
+<script>
+export default {
+  name: 'MyChild',
+  props: {
+    parentMessage: {
+      type: String,
+      default: '默认显示的信息123'
+      // require: true // 必填
+    }
+  }
+}
+</script>
+
+2. 上级parent.vue:
+<template>
+    <div>
+        <MyChild :parentMessage="var1"></MyChild>
+      <el-input v-model="inputData" placeholder="Please input" style="width:400px;max-width:100%;" />
+    </div>
+</template>
+
+<script>
+import MyChild from '@/components/MyChild'
+
+export default {
+  components: {
+    MyChild
+  },
+  data () {
+    return {
+      var1: '我是来自父组件的消息'
+    }
+  }
+}
+</script>

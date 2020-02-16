@@ -1,0 +1,42 @@
+直接拿出可用的完整例子：
+swiperdemo.vue:
+<template>
+    <div>
+        <swiper :options="swiperOption" >
+          <swiper-slide v-for="imageitem in images" :key="imageitem">
+            <img :src="imageitem" alt="">
+          </swiper-slide>
+          <div class="swiper-pagination" slot="pagination"></div>
+        </swiper>
+    </div>
+</template>
+<script>
+import { swiper, swiperSlide } from 'vue-awesome-swiper'
+export default {
+  components: {
+    swiper,
+    swiperSlide
+  },
+  data () {
+    return {
+      images: [
+        require('../assets/timg.jpg'),
+        require('../assets/tim1.jpg')
+      ],
+      swiperOption1: {
+        pagination: '.swiper-pagination',
+        paginationClickable: true,
+        autoplay: 2500,
+        autoplayDisableOnInteraction: false,
+        loop: false,
+        coverflow: {
+          rotate: 30,
+          stretch: 10,
+          depth: 60,
+          modifier: 2
+        }
+      }
+    }
+  }
+}
+</script>
