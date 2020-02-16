@@ -1,14 +1,20 @@
 
 <template>
   <div id="app">
-    <!-- img src="./assets/logo.png" -->
+    <img src="./assets/timg.jpg">
+    <img :src="imgsrc">
     <router-view/>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  data () {
+    return {
+      imgsrc: require('./assets/tim1.jpg')
+    }
+  }
 }
 </script>
 
