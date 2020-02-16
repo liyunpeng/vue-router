@@ -1,19 +1,27 @@
 <template>
     <div>
-        <h1>swiper</h1>
+        <h1>单张图片</h1>
         <img :src="items" alt="">
+        <h1>数字可以滑动</h1>
         <swiper :options="swiperOption">
           <swiper-slide>1</swiper-slide>
           <swiper-slide>2</swiper-slide>
           <swiper-slide>3</swiper-slide>
         </swiper>
-        <h1>swiper</h1>
+        <h1>图片可以滑动</h1>
         <swiper :options="swiperOption">
           <swiper-slide>
             <img :src="items" alt="">
           </swiper-slide>
           <swiper-slide>
             <img :src="items1" alt="">
+          </swiper-slide>
+          <div class="swiper-pagination" slot="pagination"></div>
+        </swiper>
+        <h1>v-for写法图片滑动</h1>
+        <swiper :options="swiperOption" >
+          <swiper-slide v-for="imageitem in images" :key="imageitem">
+            <img :src="imageitem" alt="">
           </swiper-slide>
           <div class="swiper-pagination" slot="pagination"></div>
         </swiper>
@@ -32,6 +40,10 @@ export default {
       radio: '1',
       items: require('../assets/tim1.jpg'),
       items1: require('../assets/timg.jpg'),
+      images: [
+        require('../assets/timg.jpg'),
+        require('../assets/tim1.jpg')
+      ],
       swiperOption: {
         slidesPerView: 'auto',
         centeredSlides: true,
