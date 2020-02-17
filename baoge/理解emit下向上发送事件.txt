@@ -1,0 +1,9 @@
+下级组件通过
+      this.$emit('increment1')
+      this.$emit('increment2')
+向上级组件发送事件，
+
+上级组件的相应程序为：
+ <my-button4 @increment1="incrementTotal1"></my-button4>
+ <my-button4 @increment2="incrementTotal2"></my-button4>
+ 可见，@后面就是事件的名字， 是下级组件要发送的事件的名字

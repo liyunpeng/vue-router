@@ -15,6 +15,7 @@ import Appmain from '@/components/Appmain'
 import page1 from '@/components/page1'
 import page2 from '@/components/page2'
 import mixindemo from '@/components/mixindemo'
+import EmitUper from '@/components/EmitUper'
 import slotparent from '@/components/slotparent'
 
 Vue.use(Router)
@@ -32,6 +33,10 @@ export const constantRoutes = [
   {
     path: '/home', //   访问路径： http://localhost:8080/#/home
     component: home
+  },
+  {
+    path: '/EmitUper',
+    component: EmitUper
   },
   {
     path: '/parent', //   访问路径： http://localhost:8080/#/parent

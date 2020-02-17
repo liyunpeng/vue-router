@@ -1,8 +1,6 @@
 
 <template>
   <div id="app">
-    <img src="./assets/timg.jpg">
-    <img :src="imgsrc">
     <router-view/>
   </div>
 </template>

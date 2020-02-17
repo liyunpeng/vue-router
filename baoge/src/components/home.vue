@@ -20,7 +20,7 @@
 import { mapMutations, mapActions } from 'vuex'
 import {mixin} from '../mixin/mixin'
 export default {
-  mixins:[mixin],
+  mixins: [ mixin ],
   data () {
     return {
       msg: '我是home 组件',
