@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import myButton4 from '@/components/myButton4.vue'
+import myButton4 from '@/components/myButton5.vue'
 
 export default {
   data () {

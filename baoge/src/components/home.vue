@@ -14,6 +14,9 @@
          <p>axios get : {{axiosget}}</p>
          <p>{{nameb}}</p>
         <el-time-select v-model="value1" :picker-options="{start: '08:30',step: '00:15',end: '18:30'}"></el-time-select>
+        <div class="div1">
+          <p class="p1">text </p>
+        </div>
     </div>
 </template>
 <script>
@@ -92,4 +95,7 @@ export default {
 </script>
 <style>
   @import url("//unpkg.com/element-ui@2.13.0/lib/theme-chalk/index.css");
+  .div1 > .p1 {
+    color: red;
+  }
 </style>
