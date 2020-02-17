@@ -1,8 +1,8 @@
 <template>
   <div>
     <p>{{ total }}</p>
-    <my-button4 @increment1="incrementTotal1"></my-button4>     <!--自定义方法increment1监听子组件触发情况-->
-    <my-button4 @increment2="incrementTotal2"></my-button4>     <!--自定义方法increment2监听子组件触发情况-->
+    <my-button-4 @increment1="incrementTotal1"></my-button-4>     <!--自定义方法increment1监听子组件触发情况-->
+    <my-button-4 @increment2="incrementTotal2"></my-button-4>     <!--自定义方法increment2监听子组件触发情况-->
   </div>
 </template>
 

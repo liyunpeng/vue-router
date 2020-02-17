@@ -1,0 +1,14 @@
+组件都是以标签来引用
+组件的名字是几个单词连载一起的，以驼峰方式命名，如：
+import myButton5 from '@/components/myButton5.vue'
+components: {
+  myButton5
+}
+
+组件的标签名是在模板里引用的， 以中线分割的命名方式
+中线在什么位置，Vue会以单词为边界， 如
+组件名myButton5对应的标签名是my-button5：
+ <my-button5></my-button5>
+ 也可以是my-button-5：
+ <my-button-5></my-button-5>
+这种分割规则是vue的规则，不要认为设定组件的标签名
