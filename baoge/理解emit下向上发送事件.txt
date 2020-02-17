@@ -7,3 +7,12 @@
  <my-button4 @increment1="incrementTotal1"></my-button4>
  <my-button4 @increment2="incrementTotal2"></my-button4>
  可见，@后面就是事件的名字， 是下级组件要发送的事件的名字
+
+vue标签，elementuid标签中凡是有@的属性，表示要接收下级组件发来的事件， 如：
+<my-button4 @increment1="incrementTotal1"></my-button4>
+凡是有：的属性，表示要向下级组件发送的数据， 如：
+<MyChild :parentMessage="var1"></MyChild>
+：， @都是上级组件用的。
+下级组件都要在脚本配合上级组件。
+下级的props对应上级的：
+下级的emit对应上级的@

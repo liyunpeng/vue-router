@@ -1,0 +1,78 @@
+Sass 是一个 CSS 预处理器。
+
+Sass 是 CSS 扩展语言，可以帮助我们减少 CSS 重复的代码，节省开发时间。
+
+Sass 完全兼容所有版本的 CSS。
+
+Sass 扩展了 CSS3，增加了规则、变量、混入、选择器、继承、内置函数等等特性。
+
+Sass 生成良好格式化的 CSS 代码，易于组织和维护。
+
+Sass 文件后缀为 .scss。
+
+CSS 本身语法不够强大，导致重复编写一些代码，无法实现复用，而且在代码也不方便维护。
+
+Sass 引入合理的样式复用机制，增加了规则、变量、混入、选择器、继承、内置函数等等特性。
+
+浏览器并不支持 Sass 代码。因此需要使用一个 Sass 预处理器将 Sass 代码转换为 CSS 代码。
+
+Vue 支持scss 需要安装
+$ npm install node-sass@latest
+
+> node-sass@4.13.1 install E:\web-front\vue-router\baoge\node_modules\node-sass
+> node scripts/install.js
+
+Cached binary found at C:\Users\allen\AppData\Roaming\npm-cache\node-sass\4.13.1\win32-x64-72_binding.node
+
+> node-sass@4.13.1 postinstall E:\web-front\vue-router\baoge\node_modules\node-sass
+> node scripts/build.js
+
+Binary found at E:\web-front\vue-router\baoge\node_modules\node-sass\vendor\win32-x64-72\binding.node
+Testing binary
+Binary is fine
+npm WARN ajv-keywords@2.1.1 requires a peer of ajv@^5.0.0 but none is installed. You must install peer dependencies yourself.
+npm WARN sass-loader@8.0.2 requires a peer of webpack@^4.36.0 || ^5.0.0 but none is installed. You must install peer dependencies yourself.
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.11 (node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.2.11: wanted {"os":"darwin","arch":"any"} (current: {"os":"win32","arch":"x64"})
+
++ node-sass@4.13.1
+added 40 packages from 56 contributors and audited 33191 packages in 98.914s
+
+28 packages are looking for funding
+  run `npm fund` for details
+
+found 92 vulnerabilities (69 low, 9 moderate, 13 high, 1 critical)
+  run `npm audit fix` to fix them, or `npm audit` for details
+
+
+2 报错 TypeError: this.getResolve is not a function
+原因：安装的sass-loader的版本为最新8.0.0，查看网上资料说是版本过高导致编译错误。
+
+解决方法：
+
+把项目package.json文件中sass-loader版本改为7.3.1。执行命令，重新安装项目依赖：
+
+npm install
+npm run dev
+
+3. 使用例子
+<template>
+  <div>
+    <p>scss text </p>
+  </div>
+</template>
+<style lang="scss">
+  $bgcolor: lightblue;
+  $textcolor: darkblue;
+  $fontsize: 18px;
+
+  /* 使用变量 */
+  body {
+    background-color: $bgcolor;
+    color: $textcolor;
+    font-size: $fontsize;
+  }
+</style>
+
+
+
