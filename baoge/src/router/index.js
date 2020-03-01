@@ -81,12 +81,12 @@ export const constantRoutes = [
     component: Me,
     children: [
       {
-        path: 'collection',
+        path: 'collectionPath',
         name: 'Collection',
         component: Collection
       },
       {
-        path: 'trace',
+        path: 'tracePath',
         name: 'Trace',
         component: Trace
       }

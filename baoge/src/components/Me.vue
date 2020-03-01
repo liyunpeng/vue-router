@@ -14,14 +14,8 @@
   </div>
 </template>
 <script type="text/ecmascript-6">
-import Collection from '@/components/Collection'
-import Trace from '@/components/Trace'
 
 export default {
-  components: {
-    Collection,
-    Trace
-  },
   data () {
     return {
       parentMessage: '我是来自父组件的消息'
