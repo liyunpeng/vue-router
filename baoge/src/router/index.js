@@ -68,6 +68,18 @@ export const constantRoutes = [
         path: 'me',
         name: 'me',
         component: () => import('@/components/me'),
+        children: [
+          {
+            path: 'collectionPath',
+            name: 'Collection',
+            component: Collection
+          },
+          {
+            path: 'tracePath',
+            name: 'Trace',
+            component: Trace
+          }
+        ]
       }
     ]
   },
