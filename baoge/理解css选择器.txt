@@ -2,7 +2,7 @@
 > :
 A > B 选择的是B， 表示把所有A中的B选择出来。
 如：
-div>p
+div > p
 {
 	background-color:red;
 }

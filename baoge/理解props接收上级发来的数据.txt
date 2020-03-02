@@ -1,3 +1,4 @@
+props is used to receive data from up component
 例子能最快说明意思：
 1. MyChild.vue:
 <template>

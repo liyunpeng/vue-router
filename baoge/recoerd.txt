@@ -1,0 +1,19 @@
+1. npm install
+npm install 报错node-sass@4.13.0 postinstall:`node scripts/build.js`
+Failed at the node-sass@4.13.0
+ solution:
+ $ npm config set sass_binary_site=https://npm.taobao.org/mirrors/node-sass
+
+2.
+$ npm install
+Failed at the chromedriver@2.46.0 install script.
+solution:
+$ npm install chromedriver --chromedriver_cdnurl=http://cdn.npm.taobao.org/dist/chromedriver
+
+3.
+$ npm run dev
+Module build failed: Error: ENOENT: no such file or directory,
+scandir 'E:\web-front\vue-router\baoge\node_modules\node-sass\vendor'
+
+solution:
+npm install node-sass
