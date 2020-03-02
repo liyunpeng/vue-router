@@ -5,11 +5,14 @@
         <el-menu router :default-active="$route.path">
           <el-submenu index="1">
             <template slot="title"><i class="el-icon-message"></i>VUE基础</template>
-              <el-menu-item index="/index/slotparent">插槽方式</el-menu-item>
-              <el-menu-item index="/index/order">order</el-menu-item>
-              <el-menu-item index="/index/login">login</el-menu-item>
-              <el-menu-item index="/index/swiper">swiper</el-menu-item>
-              <el-menu-item index="/index/me">me</el-menu-item>
+              <el-menu-item index="/index/slotparent">槽</el-menu-item>
+              <el-menu-item index="/index/state">state用法</el-menu-item>
+              <el-menu-item index="/index/swiper">滑动组件</el-menu-item>
+              <el-menu-item index="/index/emitupper">emit向上级发送事件</el-menu-item>
+              <el-menu-item index="/index/parent">父组件</el-menu-item>
+            <el-menu-item index="/index/menutable">menutable</el-menu-item>
+            <el-menu-item index="/index/mixindemo">mixindemo</el-menu-item>
+            <el-menu-item index="/index/me">me</el-menu-item>
               <el-menu-item index="/index/scss">scss</el-menu-item>
             <el-menu-item-group title="分组2">
               <el-menu-item index="1-3">选项3</el-menu-item>

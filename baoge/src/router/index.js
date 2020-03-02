@@ -1,12 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import menutable from '@/components/menutable'
-import HelloWorld from '@/components/HelloWorld'
 import home from '@/components/home'
 import parent from '@/components/parent'
 import input from '@/components/input'
 import login from '@/components/login'
-import order from '@/components/order'
+import state from '@/components/state'
 import swiper from '@/components/swiper'
 import Collection from '@/components/Collection'
 import Trace from '@/components/Trace'
@@ -14,15 +13,12 @@ import Me from '@/components/Me'
 import Appmain from '@/components/Appmain'
 import page1 from '@/components/page1'
 import page2 from '@/components/page2'
-import mixindemo from '@/components/mixindemo'
 import EmitUper from '@/components/EmitUper'
 import scss from '@/components/scss'
 import slotparent from '@/components/slotparent'
 import index from '@/components/index'
 
 Vue.use(Router)
-// export default new Router({
-//   routes: [
 export const constantRoutes = [
   {
     path: '/index',
@@ -45,19 +41,14 @@ export const constantRoutes = [
         component: () => import('@/components/scss'),
       },
       {
-        path: 'login',
-        name: 'login',
-        component: () => import('@/components/login'),
+        path: 'emitupper',
+        name: 'emitupper',
+        component: () => import('@/components/EmitUper'),
       },
       {
-        path: 'home',
-        name: 'home',
-        component: () => import('@/components/home'),
-      },
-      {
-        path: 'order',
-        name: 'order',
-        component: () => import('@/components/order'),
+        path: 'state',
+        name: 'state',
+        component: () => import('@/components/state'),
       },
       {
         path: 'swiper',
@@ -80,77 +71,34 @@ export const constantRoutes = [
             component: Trace
           }
         ]
+      },
+      {
+        path: 'mixindemo',
+        name: 'mixindemo',
+        component: () => import('@/components/mixindemo')
+      },
+      {
+        path: 'parent',
+        name: 'parent',
+        component: () => import('@/components/parent')
+      },
+      {
+        path: 'input',
+        component: input
+      },
+      {
+        path: 'menutable',
+        name: 'menutable',
+        component: () => import('@/components/menutable')
       }
     ]
   },
   {path: '/page1', component: page1},
   {path: '/page2', component: page2},
-  {path: '/mixindemo', component: mixindemo},
   {
     path: '/',
-    name: 'HelloWorld',
-    component: HelloWorld
-  },
-  {
-    path: '/home', //   访问路径： http://localhost:8080/#/home
-    component: home
-  },
-  {
-    path: '/scss', //   访问路径： http://localhost:8080/#/home
-    component: scss
-  },
-  {
-    path: '/EmitUper',
-    component: EmitUper
-  },
-  {
-    path: '/parent', //   访问路径： http://localhost:8080/#/parent
-    component: parent
-  },
-  {
-    path: '/input', //   访问路径： http://localhost:8080/#/parent
-    component: input
-  },
-  {
-    path: '/menutable', //   访问路径： http://localhost:8080/#/menutable
-    component: menutable
-  },
-  {
-    path: '/login', //   访问路径： http://localhost:8080/#/login
+    name: 'login',
     component: login
-  },
-  {
-    path: '/order', //   访问路径： http://localhost:8080/#/order
-    component: order
-  },
-  {
-    path: '/swiper', //   访问路径： http://localhost:8080/#/order
-    component: swiper
-  },
-  {
-    path: '/slotparent', //   访问路径： http://localhost:8080/#/order
-    component: slotparent
-  },
-  {
-    path: '/appmain', //   访问路径： http://localhost:8080/#/order
-    component: Appmain
-  },
-  {
-    path: '/me',
-    name: 'Me',
-    component: Me,
-    children: [
-      {
-        path: 'collectionPath',
-        name: 'Collection',
-        component: Collection
-      },
-      {
-        path: 'tracePath',
-        name: 'Trace',
-        component: Trace
-      }
-    ]
   }
 ]
 const createRouter = () => new Router({
