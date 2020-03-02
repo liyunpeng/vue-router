@@ -24,6 +24,7 @@ export default {
   @import "~@/styles/mixin.scss";
   @import "~@/styles/variables.scss";
   @import '~@/styles/sidebar.scss';
+
   .app-wrapper {
   @include clearfix;
     position: relative;

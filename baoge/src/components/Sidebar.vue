@@ -1,16 +1,16 @@
 <template>
   <div>
-    <!-- 因为template里面只能有一个根元素，官方这里拷过来以后在外面加了一层div标签包起来 -->
-    <el-container style="height: 500px; border: 1px solid #eee">
-      <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
+    <el-container>
+      <el-aside  style="background-color: rgb(238, 241, 246)">
         <el-menu router :default-active="$route.path">
           <el-submenu index="1">
-            <template slot="title"><i class="el-icon-message"></i>基本功能</template>
-            <el-menu-item-group>
-              <template slot="title">替换view</template>
+            <template slot="title"><i class="el-icon-message"></i>VUE基础</template>
               <el-menu-item index="/index/slotparent">插槽方式</el-menu-item>
-              <el-menu-item index="/index/home">路由方式</el-menu-item>
-            </el-menu-item-group>
+              <el-menu-item index="/index/order">order</el-menu-item>
+              <el-menu-item index="/index/login">login</el-menu-item>
+              <el-menu-item index="/index/swiper">swiper</el-menu-item>
+              <el-menu-item index="/index/me">me</el-menu-item>
+              <el-menu-item index="/index/scss">scss</el-menu-item>
             <el-menu-item-group title="分组2">
               <el-menu-item index="1-3">选项3</el-menu-item>
             </el-menu-item-group>

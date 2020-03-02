@@ -38,7 +38,36 @@ export const constantRoutes = [
         path: 'home',
         name: 'home',
         component: () => import('@/components/home'),
-        meta: { title: 'home', icon: 'dashboard' }
+      },
+      {
+        path: 'scss',
+        name: 'scss',
+        component: () => import('@/components/scss'),
+      },
+      {
+        path: 'login',
+        name: 'login',
+        component: () => import('@/components/login'),
+      },
+      {
+        path: 'home',
+        name: 'home',
+        component: () => import('@/components/home'),
+      },
+      {
+        path: 'order',
+        name: 'order',
+        component: () => import('@/components/order'),
+      },
+      {
+        path: 'swiper',
+        name: 'swiper',
+        component: () => import('@/components/swiper'),
+      },
+      {
+        path: 'me',
+        name: 'me',
+        component: () => import('@/components/me'),
       }
     ]
   },
