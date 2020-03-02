@@ -18,11 +18,30 @@ import mixindemo from '@/components/mixindemo'
 import EmitUper from '@/components/EmitUper'
 import scss from '@/components/scss'
 import slotparent from '@/components/slotparent'
+import index from '@/components/index'
 
 Vue.use(Router)
 // export default new Router({
 //   routes: [
 export const constantRoutes = [
+  {
+    path: '/index',
+    component: index,
+    children: [
+      {
+        path: 'slotparent',
+        name: 'slotparent',
+        component: () => import('@/components/slotparent'),
+        meta: { title: 'Dashboard', icon: 'dashboard' }
+      },
+      {
+        path: 'home',
+        name: 'home',
+        component: () => import('@/components/home'),
+        meta: { title: 'home', icon: 'dashboard' }
+      }
+    ]
+  },
   {path: '/page1', component: page1},
   {path: '/page2', component: page2},
   {path: '/mixindemo', component: mixindemo},
