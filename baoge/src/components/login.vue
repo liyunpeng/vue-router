@@ -1,9 +1,5 @@
 <template>
   <div class="main">
-    <div class="bg">
-    </div>
-    <div class="box_3d">
-
       <transition name="page" mode="out-in">
         <div class="login" v-if="sideLogin" key="login">
           <el-input placeholder="邮箱账号" v-model="username" style="margin-top:70px;z-index:18;" @input="checkEmailEmp" @keyup.enter.native="checkEmail">
@@ -14,38 +10,13 @@
           <transition name="fade">
             <el-input type="password" placeholder="密码" v-model="password" v-if="showpsd" key="pwd-open" @keyup.enter.native="dologin">
               <template slot="append">
-                <el-button type="primary" icon="el-icon-check" circle @click="dologin" v-if="!showButton"></el-button>
+                <el-button type="primary"  circle @click="dologin" v-if="!showButton"></el-button>
               </template>
             </el-input>
           </transition>
         </div>
-
-        <div class="register" v-else key="register">
-          <el-form :model="register_form" status-icon :rules="rules" ref="ruleForm" label-width="70px">
-            <el-form-item label="用户名" prop="username" style="margin-top:70px">
-              <el-input type="text" v-model="register_form.username"></el-input>
-            </el-form-item>
-            <el-form-item label="邮箱" prop="email" style="margin-top:40px">
-              <el-input type="text" v-model="register_form.email"></el-input>
-            </el-form-item>
-            <el-form-item label="密码" prop="password" style="margin-top:40px">
-              <el-input type="password" v-model="register_form.password" autocomplete="off"></el-input>
-            </el-form-item>
-            <el-form-item label="确认密码" prop="checkPass" style="margin-top:40px">
-              <el-input type="password" v-model="register_form.checkPass" autocomplete="off"></el-input>
-            </el-form-item>
-            <el-form-item style="margin-top:40px;">
-              <el-button type="primary" @click="submitForm('ruleForm')">注册</el-button>
-            </el-form-item>
-          </el-form>
-        </div>
       </transition>
     </div>
-    <div class="footer">
-      <p style="font" @click="changePage">{{sideLogin? "注册账号": "登录账号"}}</p >
-    </div>
-  </div>
-
 </template>
 
 <script>
@@ -123,7 +94,7 @@ export default {
     // axios.get('http://localhost:8000/v1/line').then(response => (
     //   this.xdata = response.data.legend_data,
     //     this.ydata = response.data.xAxis_data))
-    this.$axios.get('http://127.0.0.1:3000/api/v1/user/me').then((res) => {
+    this.$axios.get('http://localhost:8082/api/user/1').then((res) => {
       this.register_form.username = res.data
     // eslint-disable-next-line handle-callback-err
     }).catch(err => {
@@ -149,8 +120,10 @@ export default {
       }
     },
     dologin () {
-      this.$axios.get('http://127.0.0.1:3000/api/v1/user/me').then((res) => {
-        // eslint-disable-next-line handle-callback-err
+      console.log('data111111111')
+      this.$axios.get('http://127.0.0.1:8082/api/user/1').then((res) => {
+        console.log('data')
+        console.log(res.data)
       }).catch(err => {
       }).finally(() => {
       })
@@ -164,7 +137,14 @@ export default {
       }
     },
     submitForm () {
-
+      var data = {
+        name: 'a'
+      }
+      this.$axios.post('http://localhost:8082/api/user/', data).then((res) => {
+        // eslint-disable-next-line handle-callback-err
+      }).catch(err => {
+      }).finally(() => {
+      })
     },
     resetForm () {
 

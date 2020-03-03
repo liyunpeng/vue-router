@@ -5,6 +5,7 @@
         <el-menu router :default-active="$route.path">
           <el-submenu index="1">
             <template slot="title"><i class="el-icon-message"></i>VUE基础</template>
+              <el-menu-item index="/index/home">home</el-menu-item>
               <el-menu-item index="/index/slotparent">槽</el-menu-item>
               <el-menu-item index="/index/state">state用法</el-menu-item>
               <el-menu-item index="/index/swiper">滑动组件</el-menu-item>
