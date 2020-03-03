@@ -1,0 +1,16 @@
+bogon:baoge admin1$ git diff .
+diff --git a/baoge/src/components/home.vue b/baoge/src/components/home.vue
+index 2e3299f..4830cff 100644
+--- a/baoge/src/components/home.vue
++++ b/baoge/src/components/home.vue
+@@ -39,7 +39,7 @@ export default {
+
+   methods: {
+     initTotal () {
+-      this.$axios.get(`http://localhost:8082/api/user/2/`, {
++      this.$axios.get(`http://localhost:8082/api/user/2`, {
+后面的 / ， 在postman可以正常访问，即：
+http://localhost:8082/api/user/2/
+在postman不出错
+但在vue里会出错， vue中的代码必须用严格语法， 即：
+http://localhost:8082/api/user/2

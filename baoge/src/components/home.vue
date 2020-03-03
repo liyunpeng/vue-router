@@ -39,7 +39,7 @@ export default {
 
   methods: {
     initTotal () {
-      this.$axios.get(`http://localhost:8082/api/user/2/`, {
+      this.$axios.get(`http://localhost:8082/api/user/2`, {
       // this.$axios.get(`/v1/admin/resps_json/'`, {
         params: {
         }
