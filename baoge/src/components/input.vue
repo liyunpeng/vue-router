@@ -37,6 +37,7 @@
   </div>
 </template>
 <script>
+import axios from 'axios'
 export default {
   data () {
     return {
@@ -106,12 +107,9 @@ export default {
       if (row.isSet) {
         // 项目是模拟请求操作  自己修改下
         (function () {
-          this.$axios.post(`http://localhost:8082/api/user`, {
-            params: {
-              username: 'abcd', password: '123'
-            }
-          }).then(res => {
-            this.axiosget = res.data
+          let dataa = {"username":"cccccccc", "password":"123"}
+          axios.post(`http://localhost:8082/api/user`, dataa).then(res => {
+         
           })
           let data = JSON.parse(JSON.stringify(this.master_user.sel))
           for (let k in data) row[k] = data[k]
