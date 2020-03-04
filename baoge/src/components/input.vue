@@ -45,15 +45,27 @@ export default {
       master_user: {
         sel: null,
         columns: [
-          {field: 'type', title: '远程类型', width: 120},
-          {field: 'addport', title: '连接地址', width: 150},
-          {field: 'user', title: '登录用户', width: 120},
-          {field: 'pwd', title: '登录密码', width: 220},
-          {field: 'info', title: '其他信息'}
+          {field: 'Username', title: '用户名', width: 120},
+          {field: 'Password', title: '密码', width: 150},
+          {field: 'Name', title: '登录用户', width: 120},
+          {field: 'RoleIds', title: '角色', width: 220},
         ],
         data: []
       }
     }
+  },
+  mounted () {
+    // let j = {
+    //   id: 0,
+    //   'Username': '',
+    //   'Password': '',
+    //   'Name': '',
+    //   'RoleIds': '',
+    //   'isSet': true,
+    //   '_temporary': true
+    // }
+    // this.master_user.data.push(j)
+    // this.master_user.sel = JSON.parse(JSON.stringify(j))
   },
   methods: {
     generateIdGet () {
@@ -74,11 +86,10 @@ export default {
       }
       let j = {
         id: 0,
-        'type': '',
-        'addport': '',
-        'user': '',
-        'pwd': '',
-        'info': '',
+        'Username': '',
+        'Password': '',
+        'Name': '',
+        'RoleIds': '',
         'isSet': true,
         '_temporary': true
       }
@@ -106,12 +117,15 @@ export default {
       // 提交数据
       if (row.isSet) {
         // 项目是模拟请求操作  自己修改下
-        (function () {
-          let dataa = {"username":"cccccccc", "password":"123"}
-          axios.post(`http://localhost:8082/api/user`, dataa).then(res => {
-         
-          })
+        // (function () {
+          // let dataa = {'username':'cccccccc', 'password':'123'}
+          // axios.post(`http://localhost:8082/api/user`, dataa).then(res => {
+          // })
           let data = JSON.parse(JSON.stringify(this.master_user.sel))
+          console.log('data:', data)
+
+          axios.post(`http://localhost:8082/api/user`, data).then(res => {
+          })
           for (let k in data) row[k] = data[k]
           this.$message({
             type: 'success',
@@ -120,7 +134,7 @@ export default {
           // 然后这边重新读取表格数据
           this.readMasterUser()
           row.isSet = false
-        })()
+        // })()
       } else {
         this.master_user.sel = JSON.parse(JSON.stringify(row))
         row.isSet = true
