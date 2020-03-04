@@ -36,6 +36,11 @@ export const constantRoutes = [
         component: () => import('@/components/home'),
       },
       {
+        path: 'input',
+        name: 'input',
+        component: () => import('@/components/input'),
+      },
+      {
         path: 'scss',
         name: 'scss',
         component: () => import('@/components/scss'),

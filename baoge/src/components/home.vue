@@ -46,6 +46,10 @@ export default {
       }).then(res => {
         this.axiosget = res.data
       })
+      let data = {"username":"vvvvvvvvvvv", "password":"123"}
+      this.$axios.post(`http://localhost:8082/api/user`, data).then(res => {
+        this.axiosget = res.msg
+      })
     },
     onSubmit () {
       this.$axios.get(`/getb/`, {

@@ -1,3 +1,35 @@
+如果在vue里不写跨域的服务器地址， 如：
+import axios from 'axios'
+export function apiFunc () {
+  axios.get(`/info/`, {
+    params: {
+    }
+  }).then(res => {
+    console.log('res:' + res.data)
+    console.log('执行f123 完成')
+    return res.data
+  })
+}
+
+需要在config/index.js里添加代理proxyTable
+module.exports = {
+  dev: {
+
+    // Paths
+    assetsSubDirectory: 'static',
+    assetsPublicPath: '/',
+    proxyTable: {
+      '/info': {
+        target: 'http://192.168.0.141:8080/info', // 要代理的域名
+        changeOrigin: true,//允许跨域
+        pathRewrite: {
+          '^/info': '' // 这个是定义要访问的路径，名字随便写
+        }
+      }
+    },
+
+
+
 bogon:baoge admin1$ git diff .
 diff --git a/baoge/src/components/home.vue b/baoge/src/components/home.vue
 index 2e3299f..4830cff 100644
@@ -14,3 +46,5 @@ http://localhost:8082/api/user/2/
 在postman不出错
 但在vue里会出错， vue中的代码必须用严格语法， 即：
 http://localhost:8082/api/user/2
+
+
