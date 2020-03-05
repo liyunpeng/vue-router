@@ -45,10 +45,11 @@ export default {
       master_user: {
         sel: null,
         columns: [
+          {field: 'ID', title: '数据库ID', width: 120},
           {field: 'Username', title: '用户名', width: 120},
           {field: 'Password', title: '密码', width: 150},
-          {field: 'Name', title: '登录用户', width: 120},
-          {field: 'RoleIds', title: '角色', width: 220},
+          {field: 'Phonenumber', title: '手机号', width: 120},
+          {field: 'Level', title: '等级', width: 220},
         ],
         data: []
       }
@@ -59,11 +60,11 @@ export default {
       for (let k in res.data.data) {
         var v = res.data.data[k]
         let j = {
-          id: v.id,
+          'ID': v.ID,
           'Username': v.username,
           'Password': v.password,
-          'Name': '',
-          'RoleIds': '',
+          'Phonenumber': v.phonenumber,
+          'Level': v.level,
           'isSet': false,
           '_temporary': true
         }
@@ -91,6 +92,7 @@ export default {
       }
       let j = {
         id: 0,
+        'ID': '',
         'Username': '',
         'Password': '',
         'Name': '',
@@ -123,14 +125,9 @@ export default {
       if (row.isSet) {
         // 项目是模拟请求操作  自己修改下
         // (function () {
-          // let dataa = {'username':'cccccccc', 'password':'123'}
-          // axios.post(`http://localhost:8082/api/user`, dataa).then(res => {
-          // })
-          let data = JSON.parse(JSON.stringify(this.master_user.sel))
-          console.log('data:', data)
-
-          axios.post(`http://localhost:8082/api/user`, data).then(res => {
-          })
+        let data = JSON.parse(JSON.stringify(this.master_user.sel))
+        console.log('data:', data)
+        axios.post(`http://localhost:8082/api/user/insertOrUpdate`, data).then(res => {
           for (let k in data) row[k] = data[k]
           this.$message({
             type: 'success',
@@ -139,7 +136,8 @@ export default {
           // 然后这边重新读取表格数据
           this.readMasterUser()
           row.isSet = false
-        // })()
+        })
+      // })()
       } else {
         this.master_user.sel = JSON.parse(JSON.stringify(row))
         row.isSet = true
