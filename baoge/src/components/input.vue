@@ -55,17 +55,22 @@ export default {
     }
   },
   mounted () {
-    // let j = {
-    //   id: 0,
-    //   'Username': '',
-    //   'Password': '',
-    //   'Name': '',
-    //   'RoleIds': '',
-    //   'isSet': true,
-    //   '_temporary': true
-    // }
-    // this.master_user.data.push(j)
-    // this.master_user.sel = JSON.parse(JSON.stringify(j))
+    axios.get(`http://localhost:8082/api/user`).then(res => {
+      for (let k in res.data.data) {
+        var v = res.data.data[k]
+        let j = {
+          id: v.id,
+          'Username': v.username,
+          'Password': v.password,
+          'Name': '',
+          'RoleIds': '',
+          'isSet': false,
+          '_temporary': true
+        }
+        this.master_user.data.push(j)
+        this.master_user.sel = JSON.parse(JSON.stringify(j))
+      }
+    })
   },
   methods: {
     generateIdGet () {
