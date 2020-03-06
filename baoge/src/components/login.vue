@@ -20,6 +20,9 @@
 </template>
 
 <script>
+import axios from 'axios'
+import { mapState } from 'vuex'
+import store from '../store';
 export default {
   name: 'login',
   data () {
@@ -94,12 +97,18 @@ export default {
     // axios.get('http://localhost:8000/v1/line').then(response => (
     //   this.xdata = response.data.legend_data,
     //     this.ydata = response.data.xAxis_data))
-    this.$axios.get('http://localhost:8082/api/user/1').then((res) => {
-      this.register_form.username = res.data
-    // eslint-disable-next-line handle-callback-err
-    }).catch(err => {
-    }).finally(() => {
-    })
+    // this.$axios.get('http://localhost:8082/api/user/1').then((res) => {
+    //   this.register_form.username = res.data
+    // // eslint-disable-next-line handle-callback-err
+    // }).catch(err => {
+    // }).finally(() => {
+    // })
+  },
+  computed: {
+    ...mapState({
+      userName: state => state.user.name,
+      jwtToken: state => state.user.jwt_token,
+    }),
   },
   methods: {
     checkEmail () {
@@ -120,10 +129,14 @@ export default {
       }
     },
     dologin () {
-      console.log('data111111111')
-      this.$axios.get('http://127.0.0.1:8082/api/user/1').then((res) => {
-        console.log('data')
+      var loginInfo = {
+        username: this.username,
+        password: this.password
+      }
+      axios.post('http://localhost:8082/api/login', loginInfo).then((res) => {
         console.log(res.data)
+        store.state.user.jwt_token = res.data.data.access_token
+        this.$router.push({ path: '/index' });
       }).catch(err => {
       }).finally(() => {
       })

@@ -37,7 +37,9 @@
   </div>
 </template>
 <script>
-import axios from 'axios'
+// import axios from 'axios'
+import { mapState } from 'vuex'
+import axios from './axios.js'
 export default {
   data () {
     return {
@@ -56,6 +58,23 @@ export default {
     }
   },
   mounted () {
+    //     axios.interceptors.request.use(config => {
+    //   // 设置以 form 表单的形式提交参数，如果以 JSON 的形式提交表单，可忽略
+    //   if(config.method  === 'post'){
+    //     // JSON 转换为 FormData
+    //     // const formData = new FormData()
+    //     // Object.keys(config.data).forEach(key => formData.append(key, config.data[key]))
+    //     // config.data = formData
+    //   }
+
+    //   // config.headers.Authorization = 'Bearer ' + this.jwtToken
+    //   config.headers.Authorization = state.user.jwtToken
+    //   return config
+    //   },error =>{
+    //     alert("错误的传参", 'fail')
+    //     return Promise.reject(error)
+    // })
+
     axios.get(`http://localhost:8082/api/user`).then(res => {
       for (let k in res.data.data) {
         var v = res.data.data[k]
