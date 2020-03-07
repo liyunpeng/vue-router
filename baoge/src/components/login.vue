@@ -135,8 +135,15 @@ export default {
       }
       axios.post('http://localhost:8082/api/login', loginInfo).then((res) => {
         console.log(res.data)
-        store.state.user.jwt_token = res.data.data.access_token
-        this.$router.push({ path: '/index' });
+        if (res.data.status === true) {
+          store.state.user.jwt_token = res.data.data.access_token
+          this.$router.push({ path: '/index' })
+        } else {
+          this.$message({
+            type: 'fail',
+            message: '登录异常'
+          })
+        }
       }).catch(err => {
       }).finally(() => {
       })

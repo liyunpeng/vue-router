@@ -114,8 +114,8 @@ export default {
         'ID': '',
         'Username': '',
         'Password': '',
-        'Name': '',
-        'RoleIds': '',
+        'Phonenumber': '',
+        'Level': '',
         'isSet': true,
         '_temporary': true
       }
@@ -148,13 +148,20 @@ export default {
         console.log('data:', data)
         axios.post(`http://localhost:8082/api/user/insertOrUpdate`, data).then(res => {
           for (let k in data) row[k] = data[k]
-          this.$message({
-            type: 'success',
-            message: '保存成功!'
-          })
-          // 然后这边重新读取表格数据
-          this.readMasterUser()
-          row.isSet = false
+          if (res.data.status === true) {
+            this.$message({
+              type: 'success',
+              message: '保存成功!'
+            })
+            // 然后这边重新读取表格数据
+            this.readMasterUser()
+            row.isSet = false
+          } else {
+            this.$message({
+              type: 'fail',
+              message: '保存异常!'
+            })
+          }
         })
       // })()
       } else {
