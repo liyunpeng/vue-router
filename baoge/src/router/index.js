@@ -4,6 +4,7 @@ import menutable from '@/components/menutable'
 import home from '@/components/home'
 import parent from '@/components/parent'
 import input from '@/components/input'
+import monitor from '@/components/monitor'
 import login from '@/components/login'
 import state from '@/components/state'
 import swiper from '@/components/swiper'
@@ -39,6 +40,11 @@ export const constantRoutes = [
         path: 'input',
         name: 'input',
         component: () => import('@/components/input'),
+      },
+      {
+        path: 'monitor',
+        name: 'monitor',
+        component: () => import('@/components/monitor'),
       },
       {
         path: 'scss',
