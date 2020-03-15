@@ -1,6 +1,5 @@
 <template>
   <div>
-    1111111
     {{msg}}
   </div>
 </template>
@@ -11,6 +10,9 @@ export default {
       websock: null,
       msg: ''
     }
+  },
+  created () {
+    this.init()
   },
   methods: {
     init: function () {
@@ -23,28 +25,28 @@ export default {
     },
     onopen: function () {
       this.send('{"userid":1, "name":"zhang san", "age":"30"}')
+      // this.send('send  begining data')
     },
     send: function (data) {
-      for (var i = 0; i < 10; i++) {
-        this.websock.send(data)
-      }
+      this.websock.send(data)
     },
     onclose: function (e) {
       console.log('ws close', e)
     },
     onmessage: function (e) {
-      let _this = this
       console.log(e.data)
-      _this.msg = e.data
+      var a = JSON.parse(e.data)
+      this.msg = this.msg.concat('<br>', a.Data)
+      // this.msg = 'aaaaaaa'
+      // let i = {s
+      //   'name' : 'data'
+      // }
+      // this.msg.push(j)
     },
     onerror: function () {
       console.log('ws error')
       this.init()
     }
-  },
-  mounted: function () {
-    this.init()
-    this.send('aaaaaaa')
   },
   watch: {
   }
