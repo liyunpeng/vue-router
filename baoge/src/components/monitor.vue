@@ -1,6 +1,32 @@
 <template>
   <div id='app'>
     <el-row>
+      <el-select v-model="value" placeholder="请选择" popper-class = "optionsContent" filterable :filter-method="filter" @change="showMessage($event)" @keyup.native = "showOption" default-first-option>
+      <template slot = "prefix">
+        <span class = 'prefixSlot'>互联网大佬</span>
+      </template>
+      <template>
+        <div class = "tableHeader" v-show = 'optionVisible'>
+          <span style="float: left">公司</span>
+          <span style="float: left;">姓名</span>
+          <span style="float: left;">毕业院校</span>
+        </div>
+      </template>
+      <el-option
+        v-show = 'optionVisible'
+        v-for="item in options"
+        :key="item.value"
+        :label="item.label"
+        :value="item"
+        :disabled="item.disabled"
+      >
+        <span style="float: left">{{ item.key }}</span>
+        <span style="float: left">{{ item.label }}</span>
+        <span style="float: left">{{ item.value }}</span>
+      </el-option>
+    </el-select>
+    </el-row>
+    <el-row>
       <el-col span='24'>
         <el-table size='mini' :data='master_user.data' border style='width: 100%' highlight-current-row>
           <el-table-column type='index'></el-table-column>
@@ -43,7 +69,21 @@ import axios from './axios.js'
 export default {
   data () {
     return {
+      options: [
+        {
+          value: '1',
+          key: '2',
+          label: '3'
+        },
+        {
+          value: '1',
+          key: '2',
+          label: '3'
+        }
+      ],
+      value: '',
       counta: 1,
+      optionVisible: false,
       master_user: {
         sel: null,
         columns: [
@@ -56,6 +96,18 @@ export default {
     }
   },
   mounted () {
+    var apiKeylistAddress = `http://localhost:8082/api/etcd/listallkeys`
+    axios.get(apiKeylistAddress).then(res => {
+      for (let k in res.data.data) {
+        var v = res.data.data[k]
+        let j = {
+          "value": v.etcdvalue,
+          "key": v.etcdkey,
+          "label": v.label
+        }
+        this.options.push(j)
+      }
+    })
     //     axios.interceptors.request.use(config => {
     //   // 设置以 form 表单的形式提交参数，如果以 JSON 的形式提交表单，可忽略
     //   if(config.method  === 'post'){
@@ -92,6 +144,29 @@ export default {
     })
   },
   methods: {
+    filter (v) {
+      // 对绑定数据赋值
+      this.options = this.copy.filter((item) => {
+        // 如果直接包含输入值直接返回true
+        const val = v.toLowerCase()
+        if (item.label.indexOf(val) !== -1) return true
+        if (item.szm.substring(0, 1).indexOf(val) !== -1) return true
+        if (item.szm.indexOf(val) !== -1) return true
+      })
+    },
+    showOption () {
+      let inputContent = document.getElementsByClassName('el-input__inner')[0].value
+      console.log(inputContent.length)
+      if (inputContent.length != 0){
+        this.optionVisible = true;
+      }
+    },
+    showMessage (e) {
+      console.log(e)
+      this.v_company = e.company;
+      this.v_label = e.label;
+      this.v_school = e.school
+    },
     generateIdGet () {
       return ((+new Date()) + '_' + (this.counta++))
     },
@@ -169,16 +244,48 @@ export default {
   }
 }
 </script>
-<style>
-  .el-table-add-row {
-    margin-top:      10px;
-    width:           100%;
-    height:          34px;
-    border:          1px dashed #c1c1cd;
-    border-radius:   3px;
-    cursor:          pointer;
-    justify-content: center;
-    display:         flex;
-    line-height:     34px;
+<style>>
+ .prefixSlot{
+    height: 36px;
+    width: 90px;
+    display: block;
+    line-height: 36px;
+    border-right: 1px solid #f1f1f1;
+  }
+  .tableHeader{
+    background:rgb(64, 158, 255);
+    color:#fff;
+    height: 40px;
+    line-height: 40px;
+    font-size:14px;
+    font-family:HiraginoSansGB-W3;
+    font-weight:600;
+    padding: 0 20px;
+  }
+  .tableHeader span{
+    width:100px;
+    text-align: center;
+  }
+  .title{
+    margin-left:20px;
+    width:400px;
+  }
+  .title span{
+    display:block;
+    width:150px;
+    margin-bottom: 20px;
+    font-weight: 800;
+  }
+  .popper__arrow{
+    display: none!important;
+  }
+  .el-select-dropdown{
+    box-shadow: none!important;
+    min-width: 0px;
+    border:0!important;
+  }
+  .el-scrollbar__view{
+    padding:0;
+    background: #ebf3ff;
   }
 </style>

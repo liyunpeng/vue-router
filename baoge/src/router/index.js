@@ -16,6 +16,7 @@ import page1 from '@/components/page1'
 import page2 from '@/components/page2'
 import EmitUper from '@/components/EmitUper'
 import scss from '@/components/scss'
+import websocket from '@/components/websocket'
 import slotparent from '@/components/slotparent'
 import index from '@/components/index'
 
@@ -35,6 +36,11 @@ export const constantRoutes = [
         path: 'home',
         name: 'home',
         component: () => import('@/components/home'),
+      },
+      {
+        path: 'websocket',
+        name: 'websocket',
+        component: () => import('@/components/websocket'),
       },
       {
         path: 'input',
