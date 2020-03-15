@@ -24,7 +24,9 @@ export default {
       this.websock.onclose = this.onclose
     },
     onopen: function () {
-      this.send('{"userid":1, "name":"zhang san", "age":"30"}')
+      let actions = {'test': '12345'}
+      this.send(JSON.stringify(actions))
+      // this.send('{"userid":1, "name":"zhang san", "age":"30"}')
       // this.send('send  begining data')
     },
     send: function (data) {
@@ -36,12 +38,7 @@ export default {
     onmessage: function (e) {
       console.log(e.data)
       var a = JSON.parse(e.data)
-      this.msg = this.msg.concat('<br>', a.Data)
-      // this.msg = 'aaaaaaa'
-      // let i = {s
-      //   'name' : 'data'
-      // }
-      // this.msg.push(j)
+      this.msg = this.msg.concat('\n', a.Data)
     },
     onerror: function () {
       console.log('ws error')
