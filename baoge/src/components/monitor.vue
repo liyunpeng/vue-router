@@ -40,7 +40,7 @@
 // import axios from 'axios'
 // import { mapState } from 'vuex'
 // import axios from './axios.js'
-import { mapState } from 'vuex'
+import {mapMutations, mapState} from 'vuex'
 import axios from './axios.js'
 export default {
   data () {
@@ -75,6 +75,11 @@ export default {
       }
     }
   },
+  // computed: {
+  //   ...mapState({
+  //     key: state => state.etcd.key
+  //   })
+  // },
   mounted () {
     var apikeylistaddress = `http://localhost:8082/api/etcd/listallkeys`
     axios.get(apikeylistaddress).then(res => {
@@ -143,10 +148,11 @@ export default {
     },
     showMessage (e) {
       console.log(e)
+      this.$store.commit('setEtcdKey', e.label)
       this.$router.push({path: '/index/monitor/filelist'})
-      this.v_company = e.company;
-      this.v_label = e.label;
-      this.v_school = e.school
+      // this.v_company = e.company;
+      // this.v_label = e.label;
+      // this.v_school = e.school
     },
     generateIdGet () {
       return ((+new Date()) + '_' + (this.counta++))

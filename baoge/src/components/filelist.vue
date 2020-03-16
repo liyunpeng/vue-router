@@ -1,5 +1,6 @@
 <template>
   <div id='app'>
+    <p>{{key}}</p>
     <el-row>
       <el-col span='24'>
         <el-table size='mini' :data='master_user.data' border style='width: 100%' highlight-current-row>
@@ -38,8 +39,8 @@
 </template>
 <script>
 // import axios from 'axios'
-import { mapState } from 'vuex'
 import axios from './axios.js'
+import { mapState } from 'vuex'
 export default {
   data () {
     return {
@@ -56,6 +57,11 @@ export default {
         data: []
       }
     }
+  },
+  computed: {
+    ...mapState({
+      key: state => state.etcd.key
+    })
   },
   mounted () {
     //     axios.interceptors.request.use(config => {
@@ -113,9 +119,9 @@ export default {
     },
     showMessage (e) {
       console.log(e)
-      this.v_company = e.company;
-      this.v_label = e.label;
-      this.v_school = e.school
+      // this.v_company = e.company;
+      // this.v_label = e.label;
+      // this.v_school = e.school
     },
     generateIdGet () {
       return ((+new Date()) + '_' + (this.counta++))

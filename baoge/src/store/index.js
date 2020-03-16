@@ -1,13 +1,15 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import user from './user'
+import etcd from './etcd'
 import order from './order'
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
   modules: {
     user,
-    order
+    order,
+    etcd
   },
   state: {
     count: 1,
