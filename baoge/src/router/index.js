@@ -19,6 +19,7 @@ import scss from '@/components/scss'
 import websocket from '@/components/websocket'
 import slotparent from '@/components/slotparent'
 import index from '@/components/index'
+import filelist from '@/components/filelist'
 
 Vue.use(Router)
 export const constantRoutes = [
@@ -53,9 +54,9 @@ export const constantRoutes = [
         component: () => import('@/components/monitor'),
         children: [
           {
-            path: 'collectionPath',
-            name: 'Collection',
-            component: Collection
+            path: 'filelist',
+            name: 'filelist',
+            component: filelist
           },
           {
             path: 'tracePath',

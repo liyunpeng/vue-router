@@ -1,66 +1,48 @@
 <template>
-  <div>
   <div id='app'>
-      <el-select v-model="value" placeholder="请选择"
-                 popper-class = "optionsContent"
-                 filterable :filter-method="filter"
-                 @change="showMessage($event)"
-                 @keyup.native = "showOption"
-                 default-first-option>
-        <template slot = "prefix">
-          <span class = 'prefixSlot'>监控地址</span>
-        </template>
-        <template>
-          <div class = "tableHeader" v-show = 'optionVisible'>
-            <span style="float: left">key</span>
-            <span style="float: left;">label</span>
-            <span style="float: left;">value</span>
-          </div>
-        </template>
-        <el-option
-          v-show = 'optionVisible'
-          v-for="item in options"
-          :key="item.value"
-          :label="item.label"
-          :value="item"
-          :disabled="item.disabled"
-        >
-          <span style="float: left">{{ item.key}}</span>
-          <span style="float: left">{{ item.label }}</span>
-          <span style="float: left">{{ item.value }}</span>
-        </el-option>
-      </el-select>
-  </div>
-    <div class="content">
-      <router-view></router-view>
-    </div>
+    <el-row>
+      <el-col span='24'>
+        <el-table size='mini' :data='master_user.data' border style='width: 100%' highlight-current-row>
+          <el-table-column type='index'></el-table-column>
+          <el-table-column v-for='(v,i) in master_user.columns' :prop='v.field' :label='v.title' :width='v.width'>
+            <template slot-scope='scope'>
+              <span v-if='scope.row.isSet'>
+                  <el-input size='mini' placeholder='请输入内容' v-model='master_user.sel[v.field]'>
+                  </el-input>
+              </span>
+              <span v-else>{{scope.row[v.field]}}</span>
+            </template>
+          </el-table-column>
+          <el-table-column label='操作' width='100'>
+            <template slot-scope='scope'>
+              <span class='el-tag el-tag--info el-tag--mini' style='cursor: pointer'
+                    @click='pwdChange(scope.row,scope.$index,true)'>
+                {{scope.row.isSet?'保存':'修改'}}
+              </span>
+              <span v-if='!scope.row.isSet' class='el-tag el-tag--danger el-tag--mini' style='cursor: pointer'>
+                删除
+              </span>
+              <span v-else class='el-tag  el-tag--mini' style='cursor: pointer'
+                    @click='pwdChange(scope.row,scope.$index,false)'>
+                取消
+              </span>
+            </template>
+          </el-table-column>
+        </el-table>
+      </el-col>
+      <el-col span='24'>
+        <div class='el-table-add-row' style='width: 99.2%' @click='addMasterUser()'><span>+ 添加</span></div>
+      </el-col>
+    </el-row>
   </div>
 </template>
 <script>
 // import axios from 'axios'
-// import { mapState } from 'vuex'
-// import axios from './axios.js'
 import { mapState } from 'vuex'
 import axios from './axios.js'
 export default {
   data () {
     return {
-      optionVisible:true,
-      v_company:"",
-      v_label:"",
-      v_school:"",
-      options: [
-        // {
-        //   value: '1',
-        //   key: '2',
-        //   label: '3'
-        // },
-        // {
-        //   value: '1',
-        //   key: '2',
-        //   label: '3'
-        // }
-      ],
       value: '',
       counta: 1,
       optionVisible: false,
@@ -76,18 +58,6 @@ export default {
     }
   },
   mounted () {
-    var apikeylistaddress = `http://localhost:8082/api/etcd/listallkeys`
-    axios.get(apikeylistaddress).then(res => {
-      for (let k in res.data.data) {
-        var v = res.data.data[k]
-        let j = {
-          "value": v.etcdvalue,
-          "key": v.etcdkey,
-          "label": v.label
-        }
-        this.options.push(j)
-      }
-    })
     //     axios.interceptors.request.use(config => {
     //   // 设置以 form 表单的形式提交参数，如果以 JSON 的形式提交表单，可忽略
     //   if(config.method  === 'post'){
@@ -106,22 +76,22 @@ export default {
     // })
 
     // var logAddress = `/logagent/192.168.0.142/logconfig`
-    // var logAddress = `a`
-    // var fileAddress = `http://localhost:8082/api/etcd/` + logAddress
-    // axios.get(fileAddress).then(res => {
-    //   for (let k in res.data.data) {
-    //     var v = res.data.data[k]
-    //     let j = {
-    //       'filename': v.filename,
-    //       'filesize': v.filesize,
-    //       'filekeywords': v.filekeywords,
-    //       'isSet': false,
-    //       '_temporary': true
-    //     }
-    //     this.master_user.data.push(j)
-    //     this.master_user.sel = JSON.parse(JSON.stringify(j))
-    //   }
-    // })
+    var logAddress = `a`
+    var fileAddress = `http://localhost:8082/api/etcd/` + logAddress
+    axios.get(fileAddress).then(res => {
+      for (let k in res.data.data) {
+        var v = res.data.data[k]
+        let j = {
+          'filename': v.filename,
+          'filesize': v.filesize,
+          'filekeywords': v.filekeywords,
+          'isSet': false,
+          '_temporary': true
+        }
+        this.master_user.data.push(j)
+        this.master_user.sel = JSON.parse(JSON.stringify(j))
+      }
+    })
   },
   methods: {
     filter (v) {
@@ -143,7 +113,6 @@ export default {
     },
     showMessage (e) {
       console.log(e)
-      this.$router.push({path: '/index/monitor/filelist'})
       this.v_company = e.company;
       this.v_label = e.label;
       this.v_school = e.school
@@ -216,7 +185,7 @@ export default {
             })
           }
         })
-      // })()
+        // })()
       } else {
         this.master_user.sel = JSON.parse(JSON.stringify(row))
         row.isSet = true
@@ -225,58 +194,48 @@ export default {
   }
 }
 </script>
-<style>
-  .rowStyle{
-    background-color:#f0f9eb!important;
-  }
-  .el-select-dropdown__item span{
-    width:200px;
-    text-align:center;
-  }
-  .el-input--prefix .el-input__inner {
-    padding-left: 110px;
-  }
-  .prefixSlot{
-    height: 36px;
-    width: 90px;
-    display: block;
-    line-height: 36px;
-    border-right: 1px solid #f1f1f1;
-  }
-  .tableHeader{
-    background:rgb(64, 158, 255);
-    color:#fff;
-    height: 40px;
-    line-height: 40px;
-    font-size:14px;
-    font-family:HiraginoSansGB-W3;
-    font-weight:600;
-    padding: 0 20px;
-  }
-  .tableHeader span{
-    width:200px;
-    text-align: center;
-  }
-  .title{
-    margin-left:20px;
-    width:400px;
-  }
-  .title span{
-    display:block;
-    width:150px;
-    margin-bottom: 20px;
-    font-weight: 800;
-  }
-  .popper__arrow{
-    display: none!important;
-  }
-  .el-select-dropdown{
-    box-shadow: none!important;
-    min-width: 0px;
-    border:0!important;
-  }
-  .el-scrollbar__view{
-    padding:0;
-    background: #ebf3ff;
-  }
+<style>>
+.prefixSlot{
+  height: 36px;
+  width: 90px;
+  display: block;
+  line-height: 36px;
+  border-right: 1px solid #f1f1f1;
+}
+.tableHeader{
+  background:rgb(64, 158, 255);
+  color:#fff;
+  height: 40px;
+  line-height: 40px;
+  font-size:14px;
+  font-family:HiraginoSansGB-W3;
+  font-weight:600;
+  padding: 0 20px;
+}
+.tableHeader span{
+  width:100px;
+  text-align: center;
+}
+.title{
+  margin-left:20px;
+  width:400px;
+}
+.title span{
+  display:block;
+  width:150px;
+  margin-bottom: 20px;
+  font-weight: 800;
+}
+.popper__arrow{
+  display: none!important;
+}
+.el-select-dropdown{
+  box-shadow: none!important;
+  min-width: 0px;
+  border:0!important;
+}
+.el-scrollbar__view{
+  padding:0;
+  background: #ebf3ff;
+}
 </style>
