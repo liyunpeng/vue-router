@@ -1,86 +1,84 @@
 <template>
+  <div>
   <div id='app'>
-    <el-row>
-      <el-select v-model="value" placeholder="请选择" popper-class = "optionsContent" filterable :filter-method="filter" @change="showMessage($event)" @keyup.native = "showOption" default-first-option>
-      <template slot = "prefix">
-        <span class = 'prefixSlot'>互联网大佬</span>
-      </template>
-      <template>
-        <div class = "tableHeader" v-show = 'optionVisible'>
-          <span style="float: left">公司</span>
-          <span style="float: left;">姓名</span>
-          <span style="float: left;">毕业院校</span>
-        </div>
-      </template>
-      <el-option
-        v-show = 'optionVisible'
-        v-for="item in options"
-        :key="item.value"
-        :label="item.label"
-        :value="item"
-        :disabled="item.disabled"
-      >
-        <span style="float: left">{{ item.key }}</span>
-        <span style="float: left">{{ item.label }}</span>
-        <span style="float: left">{{ item.value }}</span>
-      </el-option>
-    </el-select>
-    </el-row>
-    <el-row>
-      <el-col span='24'>
-        <el-table size='mini' :data='master_user.data' border style='width: 100%' highlight-current-row>
-          <el-table-column type='index'></el-table-column>
-          <el-table-column v-for='(v,i) in master_user.columns' :prop='v.field' :label='v.title' :width='v.width'>
-            <template slot-scope='scope'>
-              <span v-if='scope.row.isSet'>
-                  <el-input size='mini' placeholder='请输入内容' v-model='master_user.sel[v.field]'>
-                  </el-input>
-              </span>
-              <span v-else>{{scope.row[v.field]}}</span>
-            </template>
-          </el-table-column>
-          <el-table-column label='操作' width='100'>
-            <template slot-scope='scope'>
-              <span class='el-tag el-tag--info el-tag--mini' style='cursor: pointer'
-                    @click='pwdChange(scope.row,scope.$index,true)'>
-                {{scope.row.isSet?'保存':'修改'}}
-              </span>
-              <span v-if='!scope.row.isSet' class='el-tag el-tag--danger el-tag--mini' style='cursor: pointer'>
-                删除
-              </span>
-              <span v-else class='el-tag  el-tag--mini' style='cursor: pointer'
-                    @click='pwdChange(scope.row,scope.$index,false)'>
-                取消
-              </span>
-            </template>
-          </el-table-column>
-        </el-table>
-      </el-col>
-      <el-col span='24'>
-        <div class='el-table-add-row' style='width: 99.2%' @click='addMasterUser()'><span>+ 添加</span></div>
-      </el-col>
-    </el-row>
+      <el-select v-model="value" placeholder="请选择"
+                 popper-class = "optionsContent"
+                 filterable :filter-method="filter"
+                 @change="showMessage($event)"
+                 @keyup.native = "showOption"
+                 default-first-option>
+        <template slot = "prefix">
+          <span class = 'prefixSlot'>互联网大佬</span>
+        </template>
+        <template>
+          <div class = "tableHeader" v-show = 'optionVisible'>
+            <span style="float: left">公司</span>
+            <span style="float: left;">姓名</span>
+            <span style="float: left;">毕业院校</span>
+          </div>
+        </template>
+        <el-option
+          v-show = 'optionVisible'
+          v-for="item in options"
+          :key="item.value"
+          :label="item.label"
+          :value="item"
+          :disabled="item.disabled"
+        >
+          <span style="float: left">{{ item.company }}</span>
+          <span style="float: left">{{ item.label }}</span>
+          <span style="float: left">{{ item.school }}</span>
+        </el-option>
+      </el-select>
+  </div>
+    <div class="content">
+      <p>content</p>
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 <script>
 // import axios from 'axios'
-import { mapState } from 'vuex'
-import axios from './axios.js'
+// import { mapState } from 'vuex'
+// import axios from './axios.js'
 export default {
   data () {
     return {
-      options: [
-        {
-          value: '1',
-          key: '2',
-          label: '3'
-        },
-        {
-          value: '1',
-          key: '2',
-          label: '3'
-        }
-      ],
+      optionVisible:true,
+      v_company:"",
+      v_label:"",
+      v_school:"",
+      options: [{
+        value: '选项1',
+        company: '腾讯',
+        label: '马化腾',
+        school: '深圳大学',
+        szm:'mht'
+      }, {
+        value: '选项2',
+        company: '美团',
+        label: '王兴',
+        school: '清华大学',
+        szm:'wx'
+      }, {
+        value: '选项3',
+        company: '小米',
+        label: '雷军',
+        school: '武汉大学',
+        szm:'lj'
+      }, {
+        value: '选项4',
+        company: '今日头条',
+        label: '张一鸣',
+        school: '南开大学',
+        szm:'zym'
+      }, {
+        value: '选项5',
+        company: '红杉资本',
+        label: '沈南鹏',
+        school: '耶鲁大学',
+        szm:'snp'
+      }],
       value: '',
       counta: 1,
       optionVisible: false,
@@ -96,18 +94,18 @@ export default {
     }
   },
   mounted () {
-    var apiKeylistAddress = `http://localhost:8082/api/etcd/listallkeys`
-    axios.get(apiKeylistAddress).then(res => {
-      for (let k in res.data.data) {
-        var v = res.data.data[k]
-        let j = {
-          "value": v.etcdvalue,
-          "key": v.etcdkey,
-          "label": v.label
-        }
-        this.options.push(j)
-      }
-    })
+    // var apikeylistaddress = `http://localhost:8082/api/etcd/listallkeys`
+    // axios.get(apikeylistaddress).then(res => {
+    //   for (let k in res.data.data) {
+    //     var v = res.data.data[k]
+    //     let j = {
+    //       "value": v.etcdvalue,
+    //       "key": v.etcdkey,
+    //       "label": v.label
+    //     }
+    //     this.options.push(j)
+    //   }
+    // }push)
     //     axios.interceptors.request.use(config => {
     //   // 设置以 form 表单的形式提交参数，如果以 JSON 的形式提交表单，可忽略
     //   if(config.method  === 'post'){
@@ -126,22 +124,22 @@ export default {
     // })
 
     // var logAddress = `/logagent/192.168.0.142/logconfig`
-    var logAddress = `a`
-    var fileAddress = `http://localhost:8082/api/etcd/` + logAddress
-    axios.get(fileAddress).then(res => {
-      for (let k in res.data.data) {
-        var v = res.data.data[k]
-        let j = {
-          'filename': v.filename,
-          'filesize': v.filesize,
-          'filekeywords': v.filekeywords,
-          'isSet': false,
-          '_temporary': true
-        }
-        this.master_user.data.push(j)
-        this.master_user.sel = JSON.parse(JSON.stringify(j))
-      }
-    })
+    // var logAddress = `a`
+    // var fileAddress = `http://localhost:8082/api/etcd/` + logAddress
+    // axios.get(fileAddress).then(res => {
+    //   for (let k in res.data.data) {
+    //     var v = res.data.data[k]
+    //     let j = {
+    //       'filename': v.filename,
+    //       'filesize': v.filesize,
+    //       'filekeywords': v.filekeywords,
+    //       'isSet': false,
+    //       '_temporary': true
+    //     }
+    //     this.master_user.data.push(j)
+    //     this.master_user.sel = JSON.parse(JSON.stringify(j))
+    //   }
+    // })
   },
   methods: {
     filter (v) {
@@ -163,6 +161,7 @@ export default {
     },
     showMessage (e) {
       console.log(e)
+      this.$router.push({path: '/index/monitor/collectionPath'})
       this.v_company = e.company;
       this.v_label = e.label;
       this.v_school = e.school
@@ -244,8 +243,18 @@ export default {
   }
 }
 </script>
-<style>>
- .prefixSlot{
+<style>
+  .rowStyle{
+    background-color:#f0f9eb!important;
+  }
+  .el-select-dropdown__item span{
+    width:100px;
+    text-align:center;
+  }
+  .el-input--prefix .el-input__inner {
+    padding-left: 110px;
+  }
+  .prefixSlot{
     height: 36px;
     width: 90px;
     display: block;

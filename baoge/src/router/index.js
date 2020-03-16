@@ -51,6 +51,18 @@ export const constantRoutes = [
         path: 'monitor',
         name: 'monitor',
         component: () => import('@/components/monitor'),
+        children: [
+          {
+            path: 'collectionPath',
+            name: 'Collection',
+            component: Collection
+          },
+          {
+            path: 'tracePath',
+            name: 'Trace',
+            component: Trace
+          }
+        ]
       },
       {
         path: 'scss',
