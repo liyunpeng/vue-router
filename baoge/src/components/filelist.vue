@@ -50,8 +50,10 @@ export default {
       master_user: {
         sel: null,
         columns: [
-          {field: 'filename', title: '文件名', width: 120},
-          {field: 'filesize', title: '大小', width: 150},
+          {field: 'Topic', title: 'kafka主题', width: 120},
+          {field: 'LogPath', title: '文件路径', width: 300},
+          {field: 'Service', title: '服务', width: 150},
+          {field: 'SendRate', title: '发送速率', width: 150},
           {field: 'filekeywords', title: '关键字', width: 150},
         ],
         data: []
@@ -62,6 +64,38 @@ export default {
     ...mapState({
       key: state => state.etcd.key
     })
+  },
+  watch: {
+    key (val) {
+      // var logAddress = this.key
+      var logAddress = encodeURIComponent(this.key)
+      var fileAddress = `http://localhost:8082/api/etcd/` + logAddress
+      // axios.get(fileAddress, {
+      //   params: {
+      //     keya: logAddress
+      //   }
+      axios.get(fileAddress).then(res => {
+        this.master_user.data = []
+        for (let k in res.data.data) {
+          var v = res.data.data[k]
+          let j = {
+            // Topic    string `json:"topic"`
+            // LogPath  string `json:"log_path"`
+            // Service  string `json:"service"`
+            // SendRate int    `json:"send_rate"`
+            'Topic': v.topic,
+            'LogPath': v.log_path,
+            'Service': v.service,
+            'SendRate': v.send_rate,
+            'filekeywords': 'abc',
+            'isSet': false,
+            '_temporary': true
+          }
+          this.master_user.data.push(j)
+          this.master_user.sel = JSON.parse(JSON.stringify(j))
+        }
+      })
+    }
   },
   mounted () {
     //     axios.interceptors.request.use(config => {
@@ -82,15 +116,22 @@ export default {
     // })
 
     // var logAddress = `/logagent/192.168.0.142/logconfig`
-    var logAddress = `a`
+    // var logAddress = this.key
+    var logAddress = encodeURIComponent(this.key)
     var fileAddress = `http://localhost:8082/api/etcd/` + logAddress
     axios.get(fileAddress).then(res => {
       for (let k in res.data.data) {
         var v = res.data.data[k]
         let j = {
-          'filename': v.filename,
-          'filesize': v.filesize,
-          'filekeywords': v.filekeywords,
+          // Topic    string `json:"topic"`
+          // LogPath  string `json:"log_path"`
+          // Service  string `json:"service"`
+          // SendRate int    `json:"send_rate"`
+          'Topic': v.topic,
+          'LogPath': v.log_path,
+          'Service': v.service,
+          'SendRate': v.send_rate,
+          'filekeywords': 'abc',
           'isSet': false,
           '_temporary': true
         }

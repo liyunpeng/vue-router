@@ -1,5 +1,5 @@
 const state = {
-  key: 'sqrtcat',
+  key: '192.168.0.1'
 }
 const mutations = {
   setEtcdKey (state, name) {
