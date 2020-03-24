@@ -22,7 +22,7 @@
 <script>
 import axios from 'axios'
 import { mapState } from 'vuex'
-import store from '../store';
+import store from '../store'
 export default {
   name: 'login',
   data () {
@@ -107,8 +107,8 @@ export default {
   computed: {
     ...mapState({
       userName: state => state.user.name,
-      jwtToken: state => state.user.jwt_token,
-    }),
+      jwtToken: state => state.user.jwt_token
+    })
   },
   methods: {
     checkEmail () {
@@ -139,12 +139,17 @@ export default {
           store.state.user.jwt_token = res.data.data.access_token
           this.$router.push({ path: '/index' })
         } else {
-          this.$message({
+          // vm.$Modal.success({
+          //   title: "提示",
+          //   content: "修改成功"
+          // })
+          this.$Message({
             type: 'fail',
             message: '登录异常'
           })
         }
       }).catch(err => {
+        console.log(err)
       }).finally(() => {
       })
     },
