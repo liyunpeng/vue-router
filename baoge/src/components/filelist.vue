@@ -54,7 +54,7 @@ export default {
           {field: 'LogPath', title: '文件路径', width: 300},
           {field: 'Service', title: '服务', width: 150},
           {field: 'SendRate', title: '发送速率', width: 150},
-          {field: 'filekeywords', title: '关键字', width: 150},
+          {field: 'filekeywords', title: '关键字', width: 150}
         ],
         data: []
       }
@@ -154,8 +154,8 @@ export default {
     showOption () {
       let inputContent = document.getElementsByClassName('el-input__inner')[0].value
       console.log(inputContent.length)
-      if (inputContent.length != 0){
-        this.optionVisible = true;
+      if (inputContent.length !== 0) {
+        this.optionVisible = true
       }
     },
     showMessage (e) {
@@ -195,7 +195,7 @@ export default {
     pwdChange (row, index, cg) {
       // 点击修改 判断是否已经保存所有操作
       for (let i of this.master_user.data) {
-        var idequa = (i.id != row.id)
+        var idequa = (i.id !== row.id)
         if (i.isSet && idequa) {
           this.$message.warning('请先保存当前编辑项')
           return false

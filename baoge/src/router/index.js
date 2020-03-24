@@ -82,12 +82,12 @@ export const constantRoutes = [
             path: 'collectionPath',
             name: 'Collection',
             component: Collection
-          },
-          {
-            path: 'tracePath',
-            name: 'Trace',
-            component: Trace
           }
+          // {
+          //   path: 'tracePath',
+          //   name: 'Trace',
+          //   component: Trace
+          // }
         ]
       },
       {

@@ -1,37 +1,37 @@
 <template>
   <div>
   <div id='app'>
-      <el-select v-model="value" placeholder="请选择"
-                 popper-class = "optionsContent"
-                 filterable :filter-method="filter"
-                 @change="showMessage($event)"
-                 @keyup.native = "showOption"
+      <el-select v-model='value' placeholder='请选择'
+                 popper-class = 'optionsContent'
+                 filterable :filter-method='filter'
+                 @change='showMessage($event)'
+                 @keyup.native = 'showOption'
                  default-first-option>
-        <template slot = "prefix">
+        <template slot = 'prefix'>
           <span class = 'prefixSlot'>监控地址</span>
         </template>
         <template>
-          <div class = "tableHeader" v-show = 'optionVisible'>
-            <span style="float: left">key</span>
-            <span style="float: left;">label</span>
-            <span style="float: left;">value</span>
+          <div class = 'tableHeader' v-show = 'optionVisible'>
+            <span style='float: left'>key</span>
+            <span style='float: left;'>label</span>
+            <span style='float: left;'>value</span>
           </div>
         </template>
         <el-option
           v-show = 'optionVisible'
-          v-for="item in options"
-          :key="item.value"
-          :label="item.label"
-          :value="item"
-          :disabled="item.disabled"
+          v-for='item in options'
+          :key='item.value'
+          :label='item.label'
+          :value='item'
+          :disabled='item.disabled'
         >
-          <span style="float: left">{{ item.key}}</span>
-          <span style="float: left">{{ item.label }}</span>
-          <span style="float: left">{{ item.value }}</span>
+          <span style='float: left'>{{ item.key}}</span>
+          <span style='float: left'>{{ item.label }}</span>
+          <span style='float: left'>{{ item.value }}</span>
         </el-option>
       </el-select>
   </div>
-    <div class="content">
+    <div class='content'>
       <router-view></router-view>
     </div>
   </div>
@@ -40,15 +40,15 @@
 // import axios from 'axios'
 // import { mapState } from 'vuex'
 // import axios from './axios.js'
-import {mapMutations, mapState} from 'vuex'
+// import {mapMutations, mapState} from 'vuex'
 import axios from './axios.js'
 export default {
   data () {
     return {
-      optionVisible:true,
-      v_company:"",
-      v_label:"",
-      v_school:"",
+      optionVisible: true,
+      v_company: '',
+      v_label: '',
+      v_school: '',
       options: [
         // {
         //   value: '1',
@@ -63,13 +63,12 @@ export default {
       ],
       value: '',
       counta: 1,
-      optionVisible: false,
       master_user: {
         sel: null,
         columns: [
           {field: 'filename', title: '文件名', width: 120},
           {field: 'filesize', title: '大小', width: 150},
-          {field: 'filekeywords', title: '关键字', width: 150},
+          {field: 'filekeywords', title: '关键字', width: 150}
         ],
         data: []
       }
@@ -86,9 +85,9 @@ export default {
       for (let k in res.data.data) {
         var v = res.data.data[k]
         let j = {
-          "value": v.etcdvalue,
-          "key": v.etcdkey,
-          "label": v.label
+          'value': v.etcdvalue,
+          'key': v.etcdkey,
+          'label': v.label
         }
         this.options.push(j)
       }
@@ -106,7 +105,7 @@ export default {
     //   config.headers.Authorization = state.user.jwtToken
     //   return config
     //   },error =>{
-    //     alert("错误的传参", 'fail')
+    //     alert('错误的传参', 'fail')
     //     return Promise.reject(error)
     // })
 
@@ -142,8 +141,8 @@ export default {
     showOption () {
       let inputContent = document.getElementsByClassName('el-input__inner')[0].value
       console.log(inputContent.length)
-      if (inputContent.length != 0){
-        this.optionVisible = true;
+      if (inputContent.length !== 0) {
+        this.optionVisible = true
       }
     },
     showMessage (e) {
@@ -185,7 +184,7 @@ export default {
     pwdChange (row, index, cg) {
       // 点击修改 判断是否已经保存所有操作
       for (let i of this.master_user.data) {
-        var idequa = (i.id != row.id)
+        var idequa = (i.id !== row.id)
         if (i.isSet && idequa) {
           this.$message.warning('请先保存当前编辑项')
           return false
