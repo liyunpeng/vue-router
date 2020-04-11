@@ -136,6 +136,10 @@ export default {
       axios.post('http://localhost:8082/api/login', loginInfo).then((res) => {
         console.log(res.data)
         if (res.data.status === true) {
+          this.$message({
+            type: 'success',
+            message: '登录成功'
+          })
           store.state.user.jwt_token = res.data.data.access_token
           this.$router.push({ path: '/index' })
         } else {
@@ -143,7 +147,7 @@ export default {
           //   title: "提示",
           //   content: "修改成功"
           // })
-          this.$Message({
+          this.$message({
             type: 'fail',
             message: '登录异常'
           })
@@ -179,6 +183,7 @@ export default {
 </script>
 
 <style>
+  @import url("//unpkg.com/element-ui@2.13.0/lib/theme-chalk/index.css");
   .main{
     width:99vw;
     height:95vh;
@@ -189,7 +194,7 @@ export default {
   .bg{
     width: 100%;
     height: 100%;
-    background: url("https://i.loli.net/2019/09/28/ytGhbzr3Xe7TsAc.png") no-repeat;
+    /*background: url("https://i.loli.net/2019/09/28/ytGhbzr3Xe7TsAc.png") no-repeat;*/
     background-size: cover;
     position: absolute;
     -webkit-filter: blur(5px);
