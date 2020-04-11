@@ -24,7 +24,7 @@
           </el-submenu>
           <el-submenu index="2">
             <template slot="title"><i class="el-icon-menu"></i>后台管理</template>
-              <el-menu-item index="/index/input">用户列表</el-menu-item>
+              <el-menu-item index="/index/userlist">用户列表</el-menu-item>
               <el-menu-item index="/index/monitor">监控文件</el-menu-item>
               <el-menu-item index="/index/websocket">websocket</el-menu-item>
             <el-menu-item-group>

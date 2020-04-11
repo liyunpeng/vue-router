@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import input from '@/components/input'
+import input from '@/components/userlist'
 import login from '@/components/login'
 import Collection from '@/components/Collection'
 import Trace from '@/components/Trace'
@@ -32,9 +32,9 @@ export const constantRoutes = [
         component: () => import('@/components/websocket')
       },
       {
-        path: 'input',
-        name: 'input',
-        component: () => import('@/components/input')
+        path: 'userlist',
+        name: 'userlist',
+        component: () => import('@/components/userlist')
       },
       {
         path: 'monitor',
