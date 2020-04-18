@@ -46,12 +46,12 @@ export default {
         username: this.username,
         password: this.password
       }
-      axios.post('http://localhost:8082/mem/redisset', loginInfo).then((res) => {
+      axios.post('http://localhost:8082/api/mem/redisset', loginInfo).then((res) => {
         console.log(res.data)
         if (res.data.status === true) {
           this.$message({
             type: 'success',
-            message: res.msg
+            message: res.data.msg
           })
           // store.state.user.jwt_token = res.data.data.access_token
           // this.$router.push({ path: '/index' })
