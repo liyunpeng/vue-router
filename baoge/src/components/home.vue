@@ -9,7 +9,7 @@
         <el-radio v-model="radio" label="2">备选项2</el-radio>
         <div v-loading="isLoading">这块内容使用v-loading指令，true时loading</div>
         <el-button @click=handle>{{clickText}}</el-button>
-        <el-input v-model="axiosget" @change="handleChange"></el-input>
+      <el-input v-model="axiosget" @change="handleChange"></el-input>
         <el-input v-model="nameb" @change="mapaction"></el-input>
          <p>axios get : {{axiosget}}</p>
          <p>{{nameb}}</p>

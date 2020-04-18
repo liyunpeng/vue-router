@@ -28,8 +28,8 @@
               <el-menu-item index="/index/monitor">监控文件</el-menu-item>
               <el-menu-item index="/index/websocket">websocket</el-menu-item>
             <el-menu-item-group>
-              <template slot="title">分组一</template>
-              <el-menu-item index="2-1">选项1</el-menu-item>
+              <template slot="title">实验</template>
+              <el-menu-item index="/index/memory">内存</el-menu-item>
               <el-menu-item index="2-2">选项2</el-menu-item>
             </el-menu-item-group>
             <el-menu-item-group title="分组2">

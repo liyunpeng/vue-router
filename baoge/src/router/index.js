@@ -27,6 +27,11 @@ export const constantRoutes = [
         component: () => import('@/components/home')
       },
       {
+        path: 'memory',
+        name: 'memory',
+        component: () => import('@/components/memory')
+      },
+      {
         path: 'websocket',
         name: 'websocket',
         component: () => import('@/components/websocket')
