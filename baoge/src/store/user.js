@@ -2,7 +2,7 @@ import { apiFunc } from '@/api/user'
 const state = {
   name: 'sqrtcat',
   age: 25,
-  jwt_token: ''
+  jwt_token: 'aaaaaaaaaaaaaaaa'
 }
 const mutations = {
   setUserName (state, name) {
