@@ -1,36 +1,45 @@
-范围选择器：
-> :
-A > B 选择的是B， 表示把所有A中的B选择出来。
+### 范围选择器：
+#### 1. A > B 表示把所有A中的B选择出来。
 如：
+```
 div > p
 {
 	background-color:red;
 }
+```
 表示 div下的所有的p 的背景色设置为红色。
 
-A 和 B 可以是标签名， 也可以是类名：
+* A 和 B 可以是标签名， 也可以是类名：
+```
   .div1 > .p1 {
     color: red;
   }
+```
 对应 html :
+```
   <div class="div1">
     <p class="p1">text </p>
   </div>
+```
 
-~ ： 同一层级选择器
-A ~ B  选择的是B， 表示和A同层级的B选择出来
+#### 2. A ~ B 表示和A同层级的B选择出来
+如：
+```
 p~ul
 {
   background-color:red;
 }
+
+```
 p后的ul被选择出来
+```
 <p>The first paragraph.</p>
 <ul>
   <li>Coffee</li>
   <li>Tea</li>
   <li>Milk</li>
 </ul>
-
+```
 
 
 

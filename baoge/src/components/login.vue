@@ -138,7 +138,7 @@ export default {
         if (res.data.status === true) {
           this.$message({
             type: 'success',
-            message: '登录成功'
+            message: res.data.msg
           })
           store.state.user.jwt_token = res.data.data.access_token
           this.$router.push({ path: '/index' })

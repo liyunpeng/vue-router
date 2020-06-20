@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-input v-model="name" placeholder="Please input" style="width:400px;max-width:100%;" ></el-input>
-    <el-button type="primary"  circle @click="doSet"></el-button>
+    <el-button type="primary" @click="doSet"></el-button>
     <h1>home</h1>
     <h1>{{this.$store.state.count}}</h1>
     <p>{{msg}}</p>
